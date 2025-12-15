@@ -4,7 +4,7 @@ import AgenticBackground from "@/components/AgenticBackground";
 import StoryBackground from "@/components/StoryBackground";
 import AgenticMemes from "@/components/AgenticMemes";
 import AdRotator from "@/components/AdRotator";
-import StoryBackground from "@/components/StoryBackground"; // Added import for StoryBackground
+import Link from "next/link";
 import { Sparkles, Bot } from "lucide-react";
 
 export default function Home() {

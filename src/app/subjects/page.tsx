@@ -75,12 +75,10 @@ export default function SubjectsPage() {
                             <Link href="/senior-secondary" className="block w-full py-3 bg-cyan-600 rounded-xl font-bold hover:bg-cyan-500">
                                 Ask Mshauri Now
                             </Link>
-                        </div>        </div>
+                        </div>
+                    </div>
                 </div>
-                </div>
-    )
-}
-
+            )}
         </main >
     );
 }
