@@ -9,7 +9,11 @@ import { Send, Bot, User, RefreshCcw, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ReportTemplate } from './ReportTemplate';
 
-export function MshauriChat() {
+interface MshauriChatProps {
+    onProfileComplete?: (data: any) => void;
+}
+
+export function MshauriChat({ onProfileComplete }: MshauriChatProps) {
     // 1. Profiling State
     const [profilingDone, setProfilingDone] = useState(false);
     const [bioData, setBioData] = useState({
@@ -31,6 +35,29 @@ export function MshauriChat() {
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
+
+    // 3. Find the Last JSON Message (The Report)
+    // We look for a message that contains ```json ... ```
+    const lastAssistantMessage = messages.filter(m => m.role === 'assistant').pop();
+    let reportData = null;
+    if (lastAssistantMessage?.content.includes('```json')) {
+        try {
+            const jsonString = lastAssistantMessage.content.match(/```json\n([\s\S]*?)\n```/)?.[1];
+            if (jsonString) {
+                reportData = JSON.parse(jsonString);
+            }
+        } catch (e) {
+            console.error("Failed to parse Report JSON", e);
+        }
+    }
+
+    // Lift State Up if Report is Ready
+    useEffect(() => {
+        if (reportData && onProfileComplete) {
+            // We interpret "Profile Complete" as "Report Generated" for the parent to show the dashboard
+            onProfileComplete(reportData);
+        }
+    }, [reportData, onProfileComplete]);
 
     // Handle Bio Submission
     const submitBio = () => {
@@ -111,19 +138,74 @@ export function MshauriChat() {
         )
     }
 
-    // 3. Find the Last JSON Message (The Report)
-    // We look for a message that contains ```json ... ```
-    const lastAssistantMessage = messages.filter(m => m.role === 'assistant').pop();
-    let reportData = null;
-    if (lastAssistantMessage?.content.includes('```json')) {
-        try {
-            const jsonString = lastAssistantMessage.content.match(/```json\n([\s\S]*?)\n```/)?.[1];
-            if (jsonString) {
-                reportData = JSON.parse(jsonString);
-            }
-        } catch (e) {
-            console.error("Failed to parse Report JSON", e);
-        }
+    // If not done profiling, show Form
+    if (!profilingDone) {
+        return (
+            <Card className="max-w-md mx-auto bg-black/50 border-white/20 backdrop-blur-md">
+                <CardContent className="p-8 space-y-6">
+                    <div className="text-center space-y-2">
+                        <div className="w-16 h-16 bg-gradient-to-br from-violet-600 to-indigo-600 rounded-full mx-auto flex items-center justify-center animate-pulse">
+                            <Bot className="h-8 w-8 text-white" />
+                        </div>
+                        <h2 className="text-2xl font-bold text-white">Tujuane (Introduction)</h2>
+                        <p className="text-gray-400">Before we start, tell me about yourself.</p>
+                    </div>
+
+                    <div className="space-y-4">
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium text-gray-300">Jina Lako (Your Name)</label>
+                            <Input
+                                placeholder="e.g. Kamau Otieno"
+                                value={bioData.name}
+                                onChange={(e) => setBioData({ ...bioData, name: e.target.value })}
+                                className="bg-black/50 border-white/20 text-white"
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium text-gray-300">Tarehe ya Kuzaliwa (DOB)</label>
+                            <Input
+                                type="date"
+                                value={bioData.dob}
+                                onChange={(e) => setBioData({ ...bioData, dob: e.target.value })}
+                                className="bg-black/50 border-white/20 text-white"
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium text-gray-300">Shule Yako (School Name)</label>
+                            <Input
+                                placeholder="e.g. Usalama Primary"
+                                value={bioData.school}
+                                onChange={(e) => setBioData({ ...bioData, school: e.target.value })}
+                                className="bg-black/50 border-white/20 text-white"
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium text-gray-300">Location (D.O.B)</label>
+                            <select
+                                value={bioData.location}
+                                onChange={(e) => setBioData({ ...bioData, location: e.target.value })}
+                                className="w-full bg-black/50 border border-white/20 text-white rounded-md h-10 px-3"
+                            >
+                                <option value="Rural">Rural (Kijijini)</option>
+                                <option value="Urban">Urban (Mjini)</option>
+                                <option value="Peri-Urban">Peri-Urban</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <Button
+                        onClick={submitBio}
+                        disabled={!bioData.name || !bioData.school}
+                        className="w-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-bold h-12"
+                    >
+                        ANZA CHAT (Start)
+                    </Button>
+                </CardContent>
+            </Card>
+        )
     }
 
     return (
