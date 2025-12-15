@@ -4,10 +4,8 @@ import { ALL_SUBJECTS_DETAILS } from "@/data/upili_content";
 import { motion } from "framer-motion";
 import { Bot, Sparkles, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 
 export default function SubjectsPage() {
-    const [activeSubject, setActiveSubject] = useState<string | null>(null);
 
     return (
         <main className="min-h-screen bg-slate-950 text-white p-4 pb-20">
