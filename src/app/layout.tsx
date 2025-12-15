@@ -3,6 +3,7 @@ import { Inter, Outfit } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/Navbar';
 import { ConnectivityMonitor } from '@/components/ConnectivityMonitor';
+import VoiceGuide from '@/components/VoiceGuide';
 
 const outfit = Outfit({ subsets: ['latin'] })
 
@@ -26,6 +27,7 @@ export default function RootLayout({
                 <ConnectivityMonitor />
                 <Navbar />
                 {children}
+                <VoiceGuide />
             </body>
         </html>
     )
