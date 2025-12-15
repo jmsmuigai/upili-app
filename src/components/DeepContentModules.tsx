@@ -1,6 +1,6 @@
 "use client";
 
-import { Info, Brain, Globe, Palette, Shield, TrendingUp } from "lucide-react";
+import { Info, Brain, Globe, Palette, Shield, TrendingUp, Cpu } from "lucide-react";
 import { STEM_DEEP_DIVE, SOCIAL_SCIENCES_DEEP_DIVE, ARTS_SPORTS_MEGA, WELLNESS_ADVICE, MARKET_ANALYSIS } from "@/data/upili_content";
 
 export default function DeepContentModules() {
@@ -25,7 +25,7 @@ export default function DeepContentModules() {
                         <div key={i} className="bg-white/10 p-4 rounded-lg hover:bg-white/15 transition-colors">
                             <h4 className="font-bold text-lg text-cyan-200">{sub.name}</h4>
                             <p className="text-sm opacity-80 mb-2">{sub.details}</p>
-                            <p className="text-xs text-cyan-400 font-mono">> CAREERS: {sub.careers}</p>
+                            <p className="text-xs text-cyan-400 font-mono">{'>'} CAREERS: {sub.careers}</p>
                         </div>
                     ))}
                 </div>

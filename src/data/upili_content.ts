@@ -117,6 +117,84 @@ export const STEM_DEEP_DIVE = {
     action: "Join Google Skills Africa freely available online to start learning Python and Generative AI today.",
 };
 
+export const TALENT_CALIBRATION_QUESTIONS = [
+    // 40+ Questions covering multiple intelligences
+    { id: 1, q: "Do you enjoy taking things apart to see how they work?", type: "STEM" },
+    { id: 2, q: "Are you the one friends come to for advice on personal problems?", type: "SOCIAL" },
+    { id: 3, q: "Do you find yourself doodling or drawing whenever you have a pen?", type: "ARTS" },
+    { id: 4, q: "Is winning in sports important to you?", type: "SPORTS" },
+    { id: 5, q: "Do you enjoy solving puzzles or logic games?", type: "STEM" },
+    { id: 6, q: "Can you easily remember melodies or song lyrics?", type: "ARTS" },
+    { id: 7, q: "Do you like organizing events or leading groups?", type: "SOCIAL" },
+    { id: 8, q: "Are you curious about how businesses make money?", type: "SOCIAL" },
+    { id: 9, q: "Do you enjoy planting or caring for animals?", type: "STEM" }, // Agric
+    { id: 10, q: "Can you code or do you want to learn to code?", type: "STEM" },
+    { id: 11, q: "Do you like debating topics in history or politics?", type: "SOCIAL" },
+    { id: 12, q: "Do you pay attention to the design of apps or websites?", type: "ARTS" },
+    { id: 13, q: "Do you enjoy cooking or baking?", type: "ARTS" }, // Hospitality
+    { id: 14, q: "Are you good at fixing broken electronics?", type: "STEM" },
+    { id: 15, q: "Do you dream of being on stage or in front of a camera?", type: "ARTS" },
+    { id: 16, q: "Do you like reading novels or writing stories?", type: "SOCIAL" },
+    { id: 17, q: "Are you interested in how the human body works?", type: "STEM" },
+    { id: 18, q: "Do you like analyzing data or statistics?", type: "STEM" },
+    { id: 19, q: "Do you care about environmental conservation?", type: "STEM" },
+    { id: 20, q: "Do you like learning foreign languages?", type: "SOCIAL" },
+    { id: 21, q: "Do you enjoy building things with wood or metal?", type: "STEM" }, // Technical
+    { id: 22, q: "Are you interested in fashion and trends?", type: "ARTS" },
+    { id: 23, q: "Do you like helping people who are sick or injured?", type: "STEM" },
+    { id: 24, q: "Do you enjoy strategy games like Chess?", type: "STEM" },
+    { id: 25, q: "Are you good at managing your own pocket money?", type: "SOCIAL" },
+    { id: 26, q: "Do you like taking photos or videos?", type: "ARTS" },
+    { id: 27, q: "Are you interested in how airplanes fly?", type: "STEM" },
+    { id: 28, q: "Do you like teaching others how to do things?", type: "SOCIAL" },
+    { id: 29, q: "Do you enjoy physical exercise and training?", type: "SPORTS" },
+    { id: 30, q: "Are you curious about space and the universe?", type: "STEM" },
+    { id: 31, q: "Do you like creating new recipes?", type: "ARTS" },
+    { id: 32, q: "Are you interested in law and justice?", type: "SOCIAL" },
+    { id: 33, q: "Do you like working with chemicals or mixing subtances?", type: "STEM" },
+    { id: 34, q: "Do you enjoy public speaking?", type: "SOCIAL" },
+    { id: 35, q: "Are you interested in robotics and AI?", type: "STEM" },
+    { id: 36, q: "Do you like painting or sculpting?", type: "ARTS" },
+    { id: 37, q: "Do you enjoy learning about different cultures?", type: "SOCIAL" },
+    { id: 38, q: "Are you interested in car engines?", type: "STEM" },
+    { id: 39, q: "Do you like planning trips or itineraries?", type: "SOCIAL" },
+    { id: 40, q: "Do you feel happy when creating something from scratch?", type: "ARTS" },
+];
+
+export const ALL_SUBJECTS_DETAILS = [
+    // STEM
+    { name: "Mathematics", category: "STEM", desc: "The language of the universe.", career: "Data Science, Engineering" },
+    { name: "Physics", category: "STEM", desc: "Matter and Energy.", career: "Aviation, Robotics" },
+    { name: "Chemistry", category: "STEM", desc: "Composition of substances.", career: "Pharmacy, Chemical Engineering" },
+    { name: "Biology", category: "STEM", desc: "Study of Life.", career: "Medicine, Environment" },
+    { name: "Computer Studies", category: "STEM", desc: "Programming & Logic.", career: "Software Dev, AI Specialist" },
+    { name: "Agriculture", category: "STEM", desc: "Food production science.", career: "Agribusiness, Research" },
+    { name: "Home Science", category: "STEM", desc: "Nutrition & Management.", career: "Dietetics, Hospitality" },
+
+    // TECHNICAL / STEM
+    { name: "Woodwork", category: "STEM", desc: "Carpentry & Joinery.", career: "Architecture, Furniture Design" },
+    { name: "Metalwork", category: "STEM", desc: "Fabrication & Welding.", career: "Mechanical Engineering" },
+    { name: "Electricity", category: "STEM", desc: "Circuits & Power.", career: "Electrical Engineering" },
+    { name: "Aviation Technology", category: "STEM", desc: "Flight mechanics.", career: "Pilot, Aero Engineer" },
+    { name: "Power Mechanics", category: "STEM", desc: "Engines & Machines.", career: "Automotive Engineering" },
+
+    // SOCIAL SCIENCES
+    { name: "English", category: "Social", desc: "Global communication.", career: "Journalism, Law, Diplomacy" },
+    { name: "Kiswahili", category: "Social", desc: "National Language.", career: "Media, Teaching, Administration" },
+    { name: "History & Govt", category: "Social", desc: "Past & Politics.", career: "Law, Politics, Archaeology" },
+    { name: "Geography", category: "Social", desc: "Earth & People.", career: "Surveying, Urban Planning" },
+    { name: "CRE/IRE/HRE", category: "Social", desc: "Religious Education.", career: "Theology, Counseling" },
+    { name: "Business Studies", category: "Social", desc: "Commerce & Trade.", career: "Accounting, Entrepreneurship" },
+    { name: "French", category: "Social", desc: "Foreign Language.", career: "International Relations" },
+    { name: "German", category: "Social", desc: "Foreign Language.", career: "Translation, Tourism" },
+    { name: "Arabic", category: "Social", desc: "Foreign Language.", career: "Diplomacy, Middle East Trade" },
+
+    // ARTS & SPORTS
+    { name: "Art & Design", category: "Arts", desc: "Visual Creativity.", career: "Graphic Design, Fashion, UI/UX" },
+    { name: "Music", category: "Arts", desc: "Theory & Performance.", career: "Music Production, Performance" },
+    { name: "Physical Education", category: "Sports", desc: "Fitness & Health.", career: "Sports Science, Physiotherapy" },
+];
+
 export const SOCIAL_SCIENCES_DEEP_DIVE = {
     title: "Social Sciences (Humanities)",
     description: "Elewa jamii, ongoza taifa. (Understand society, lead the nation.)",
