@@ -4,17 +4,28 @@
 
 @layer base {
     :root {
-        --background: 270 50% 3%;
-        --foreground: 210 40% 98%;
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 20, 0, 0;
+        /* Deep Red/Black */
+        --background-end-rgb: 0, 0, 0;
 
-        --card: 270 50% 3%;
-        --card-foreground: 210 40% 98%;
+        /* RED THEME PALETTE */
+        --upili-50: 255, 241, 242;
+        --upili-100: 255, 228, 230;
+        --upili-200: 254, 205, 211;
+        --upili-300: 253, 164, 175;
+        --upili-400: 251, 113, 133;
+        --upili-500: 244, 63, 94;
+        /* Vibrant Rose/Red */
+        --upili-600: 225, 29, 72;
+        /* Crimson */
+        --upili-700: 190, 18, 60;
+        /* Dark Red */
+        --upili-800: 159, 18, 57;
+        --upili-900: 136, 19, 55;
 
-        --popover: 270 50% 3%;
-        --popover-foreground: 210 40% 98%;
-
-        --primary: 263 70% 50%;
-        --primary-foreground: 210 40% 98%;
+        --gold-400: 250, 204, 21;
+        --gold-500: 234, 179, 8;
 
         --secondary: 217 32% 17%;
         --secondary-foreground: 210 40% 98%;

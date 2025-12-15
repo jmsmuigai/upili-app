@@ -12,8 +12,51 @@ export const KNEC_DATA = {
     }
 };
 
+export const TOP_SCHOOLS_DATA = {
+    "National Schools": [
+        "Alliance High School (Kikuyu)",
+        "Kenya High School (Kileleshwa)",
+        "Mangu High School (Thika)",
+        "Maseno School (Kisumu)",
+        "Starehe Boys' Centre (Nairobi)"
+    ],
+    "International Schools": [
+        "International School of Kenya (ISK)",
+        "Braeburn Schools",
+        "Peponi School",
+        "Brookhouse School"
+    ],
+    "TVET Institutes": [
+        "Kabete National Polytechnic",
+        "PC Kinyanjui Technical Training Institute",
+        "Nairobi Technical Training Institute",
+        "Sigalagala National Polytechnic"
+    ],
+    "Top Universities": [
+        "University of Nairobi (UoN)",
+        "Strathmore University (Business/IT)",
+        "Jomo Kenyatta University (JKUAT) (Tech/Agri)",
+        "Kenyatta University (Education/Arts)"
+    ]
+};
+
 const KNOWLEDGE_BASE = [
     // ... Previous KNEC Data ...
+    {
+        id: "top_schools",
+        content: `
+        TOP PERFORMING SCHOOLS IN KENYA:
+        - NATIONAL: Alliance High, Kenya High, Mangu, Maseno, Starehe.
+        - INTERNATIONAL: ISK, Braeburn, Brookhouse.
+        - TVET (Technical): Kabete Poly, PC Kinyanjui, Sigalagala.
+        - UNIVERSITIES: UoN, Strathmore, JKUAT.
+        
+        AI RECOMMENDS:
+        - If you like Hands-on: Go to TVET (Kabete).
+        - If you want Global exposure: International Schools.
+        - If you want Tradition & Excellence: National Schools.
+        `
+    },
     {
         id: "grading_system_kjsea",
         tags: ["grade", "jsea", "score", "level", "kjsea", "8-level"],
@@ -97,7 +140,7 @@ export function searchBrain(query: string): string {
 
     // Simple Keyword Match Simulation
     const results = KNOWLEDGE_BASE.filter(item =>
-        item.tags.some(tag => lowerQuery.includes(tag))
+        item.tags?.some(tag => lowerQuery.includes(tag))
     );
 
     if (results.length === 0) {
@@ -109,6 +152,10 @@ export function searchBrain(query: string): string {
         // If query is about demand/jobs, return stats
         if (lowerQuery.includes('job') || lowerQuery.includes('money') || lowerQuery.includes('demand')) {
             return KNOWLEDGE_BASE.find(k => k.id === "labor_market_stats")?.content || "";
+        }
+
+        if (lowerQuery.includes('school') || lowerQuery.includes('university') || lowerQuery.includes('college') || lowerQuery.includes('tvet')) {
+            return KNOWLEDGE_BASE.find(k => k.id === "top_schools")?.content || "";
         }
 
         return KNOWLEDGE_BASE.find(k => k.id === "tech_skills")?.content +

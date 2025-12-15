@@ -30,7 +30,7 @@ Congratulations on building **UPILI**! Here is how to deploy it to the world for
 3.  Import your `upili-app` repository.
 4.  **Framework Preset**: It should auto-detect "Next.js".
 
-## Step 3: Environment Variables (CRITICAL)
+## Step 3: Environment Variables (CRITICAL)performing schools 
 Before clicking Deploy, look for the **"Environment Variables"** section.
 Add the following:
 
