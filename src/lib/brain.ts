@@ -1,6 +1,17 @@
 // Simulated Vector Store / Knowledge Base
 // In a real app, this would be Pinecone, Supabase pgvector, or Firebase Vector Search
 
+export const KNEC_DATA = {
+    sms_code: "20076",
+    website: "https://www.knec.ac.ke/category/exams/kjsea/",
+    grading: {
+        "Exemplary": "80-100",
+        "Meeting Expectation": "65-79",
+        "Approaching Expectation": "50-64",
+        "Below Expectation": "0-49"
+    }
+};
+
 const KNOWLEDGE_BASE = [
     // ... Previous KNEC Data ...
     {
@@ -107,5 +118,5 @@ export function searchBrain(query: string): string {
             KNOWLEDGE_BASE.find(k => k.id === "labor_market_stats")?.content;
     }
 
-    return results.map(r => `[SOURCE: ${r.id}]: ${r.content}`).join("\n\n");
+    return results.map(r => `[SOURCE: ${r.id}]: ${r.content} `).join("\n\n");
 }

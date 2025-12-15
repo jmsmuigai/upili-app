@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { Zap, Info, Award } from 'lucide-react';
+import { Zap, Info, Award, ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -140,6 +140,109 @@ export default function Home() {
                         </div>
                     </div>
                 </motion.div>
+            </div>
+
+            {/* 4. "LUGHA YETU" (Our Language) & KNEC GUIDE */}
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-24 space-y-24">
+
+                {/* A. Cultural Robot Greetings */}
+                <div className="text-center space-y-12">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/20"
+                    >
+                        <span className="text-violet-300 text-sm font-bold uppercase tracking-widest">Cultural Intelligence</span>
+                    </motion.div>
+
+                    <h2 className="text-4xl md:text-5xl font-bold text-white">
+                        Mshauri Speaks <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">Your Language</span>
+                    </h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {/* Kikuyu Robot */}
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            className="bg-black/40 border border-white/10 rounded-2xl p-6 backdrop-blur-md text-center space-y-4"
+                        >
+                            <div className="relative w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-green-500/50 shadow-[0_0_30px_rgba(34,197,94,0.3)]">
+                                <Image src="/img_robot_kikuyu.png" alt="Kikuyu Robot" fill className="object-cover" />
+                            </div>
+                            <h3 className="text-xl font-bold text-green-400">"Atiriri urageire cigana?"</h3>
+                            <p className="text-gray-400 italic">"How much did you get?"</p>
+                        </motion.div>
+
+                        {/* Sheng Robot */}
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            className="bg-black/40 border border-white/10 rounded-2xl p-6 backdrop-blur-md text-center space-y-4"
+                        >
+                            <div className="relative w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-purple-500/50 shadow-[0_0_30px_rgba(168,85,247,0.3)]">
+                                <Image src="/img_robot_sheng.png" alt="Sheng Robot" fill className="object-cover" />
+                            </div>
+                            <h3 className="text-xl font-bold text-purple-400">"Umeangukia aje?"</h3>
+                            <p className="text-gray-400 italic">"What's the score?"</p>
+                        </motion.div>
+
+                        {/* Swahili Robot (Default) */}
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            className="bg-black/40 border border-white/10 rounded-2xl p-6 backdrop-blur-md text-center space-y-4"
+                        >
+                            <div className="relative w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-blue-500/50 shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+                                <Image src="/robot_hero.png" alt="Swahili Robot" fill className="object-cover" />
+                            </div>
+                            <h3 className="text-xl font-bold text-blue-400">"Je, umepata ngapi?"</h3>
+                            <p className="text-gray-400 italic">"What did you get?"</p>
+                        </motion.div>
+                    </div>
+                </div>
+
+                {/* B. KNEC CHECKER GUIDE */}
+                <div className="bg-gradient-to-r from-gray-900 to-black border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-[80px]" />
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                        <div className="space-y-6">
+                            <h2 className="text-3xl md:text-4xl font-bold text-white">
+                                Checking Results is <br />
+                                <span className="text-yellow-400">Easy & Fast</span>
+                            </h2>
+                            <p className="text-xl text-gray-300">
+                                Don't panic. Use the official KNEC SMS service or the Online Portal.
+                            </p>
+
+                            <ul className="space-y-4">
+                                <li className="flex items-center gap-3 text-gray-200">
+                                    <div className="h-8 w-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-bold">1</div>
+                                    <span>Send Index Number to <strong className="text-white">20076</strong> (SMS)</span>
+                                </li>
+                                <li className="flex items-center gap-3 text-gray-200">
+                                    <div className="h-8 w-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-bold">2</div>
+                                    <span>Visit the <a href="https://www.knec.ac.ke/category/exams/kjsea/" target="_blank" className="text-blue-400 underline decoration-blue-400/30 hover:decoration-blue-400">KNEC Portal</a></span>
+                                </li>
+                            </ul>
+
+                            <Link href="https://www.knec.ac.ke/category/exams/kjsea/" target="_blank">
+                                <Button size="lg" className="mt-6 bg-yellow-500 text-black hover:bg-yellow-400 font-bold gap-2">
+                                    Check Results Online <ArrowRight className="h-4 w-4" />
+                                </Button>
+                            </Link>
+                        </div>
+
+                        <div className="relative">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                className="relative rounded-xl overflow-hidden shadow-2xl border border-white/10"
+                            >
+                                <Image src="/img_result_guide.png" alt="How to check JSEA Results" width={600} height={400} className="w-full" />
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </main>
     );
