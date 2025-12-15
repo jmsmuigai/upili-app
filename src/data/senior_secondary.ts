@@ -74,3 +74,30 @@ export const EXPECTATIONS = {
     meeting: "Solid understanding of curriculum. Transition ready.",
     approaching: "Need focused revision in specific areas before Senior Secondary.",
 };
+
+export const SENIOR_SCHOOLS = [
+    { id: "1", name: "Alliance High School", type: "National", location: "Kiambu", bestFor: ["STM", "Leadership"], image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800" },
+    { id: "2", name: "Kenya High School", type: "National", location: "Nairobi", bestFor: ["STM", "Languages"], image: "https://images.unsplash.com/photo-1599940824399-b87987ce0799?w=800" },
+    { id: "3", name: "Mangu High School", type: "National", location: "Kiambu", bestFor: ["Aviation", "STM"], image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800" },
+    { id: "4", name: "Maseno School", type: "National", location: "Kisumu", bestFor: ["STM", "Computing"], image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800" },
+    { id: "5", name: "Maryhill Girls", type: "National", location: "Thika", bestFor: ["STM", "Arts"], image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800" },
+];
+
+export const ADVICE_TIPS = [
+    {
+        title: "Focus on Strengths",
+        content: "Don't just follow the crowd. Choose subjects where you naturally perform well. If you love machines, embrace Physics and Computer Studies.",
+        action: "Review your last 3 term reports."
+    },
+    {
+        title: "Future Marketability",
+        content: "Technology is the future. Even if you choose Arts, add a digital skill like Graphic Design or Coding to stay competitive.",
+        action: "Pick at least one technical elective."
+    },
+    {
+        title: "Passion Fuel",
+        content: "Senior school is intense. Your passion for the subject will keep you going when the concepts get tough.",
+        action: "Write down 3 things you love doing."
+    },
+];
+
