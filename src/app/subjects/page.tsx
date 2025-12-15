@@ -72,14 +72,15 @@ export default function SubjectsPage() {
                             "I am ready to explain everything about {activeSubject}. What would you like to know?"
                         </p>
                         <div className="space-y-3">
-                            <button className="w-full py-3 bg-cyan-600 rounded-xl font-bold hover:bg-cyan-500">How is this marked?</button>
-                            <button className="w-full py-3 bg-slate-800 rounded-xl font-bold hover:bg-slate-700">What jobs can I get?</button>
-                            <button className="w-full py-3 bg-slate-800 rounded-xl font-bold hover:bg-slate-700">Is it hard?</button>
-                        </div>
-                    </div>
+                            <Link href="/senior-secondary" className="block w-full py-3 bg-cyan-600 rounded-xl font-bold hover:bg-cyan-500">
+                                Ask Mshauri Now
+                            </Link>
+                        </div>        </div>
                 </div>
-            )}
+                </div>
+    )
+}
 
-        </main>
+        </main >
     );
 }

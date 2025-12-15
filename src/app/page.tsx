@@ -1,15 +1,20 @@
 import { APP_CONFIG } from "@/data/upili_content";
 import UpiliDataEngine from "@/components/UpiliDataEngine";
 import AgenticBackground from "@/components/AgenticBackground";
+import StoryBackground from "@/components/StoryBackground";
 import AgenticMemes from "@/components/AgenticMemes";
 import AdRotator from "@/components/AdRotator";
+import StoryBackground from "@/components/StoryBackground"; // Added import for StoryBackground
 import { Sparkles, Bot } from "lucide-react";
 
 export default function Home() {
     return (
         <main className="min-h-screen bg-[#020205] text-white selection:bg-cyan-500 selection:text-black overflow-hidden relative">
 
-            {/* 1. BINARY MOTION BACKGROUND */}
+            {/* 1. VISUAL STORYTELLING LAYER (Reality) */}
+            <StoryBackground />
+
+            {/* 2. DIGITAL OVERLAY LAYER (The Solution) */}
             <AgenticBackground />
 
             <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4">
