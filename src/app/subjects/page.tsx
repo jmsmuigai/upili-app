@@ -57,26 +57,6 @@ export default function SubjectsPage() {
                 </div>
             </div>
 
-            {/* Simplified Modal for "Chat" (In a real app, this would open the main chat context) */}
-            {activeSubject && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-                    <div className="bg-slate-900 border border-cyan-500/50 p-8 rounded-3xl max-w-md w-full text-center relative">
-                        <button onClick={() => setActiveSubject(null)} className="absolute top-4 right-4 text-slate-500 hover:text-white">✕</button>
-                        <div className="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-cyan-400">
-                            <Sparkles size={32} />
-                        </div>
-                        <h2 className="text-2xl font-bold mb-2">Analyzing {activeSubject}...</h2>
-                        <p className="text-slate-400 mb-6">
-                            "I am ready to explain everything about {activeSubject}. What would you like to know?"
-                        </p>
-                        <div className="space-y-3">
-                            <Link href="/senior-secondary" className="block w-full py-3 bg-cyan-600 rounded-xl font-bold hover:bg-cyan-500">
-                                Ask Mshauri Now
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            )}
         </main >
     );
 }
