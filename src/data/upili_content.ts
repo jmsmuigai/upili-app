@@ -24,6 +24,70 @@ export const WELLNESS_ADVICE = [
     },
 ];
 
+export const JSEA_GRADING = {
+    title: "Understanding Your JSEA Results",
+    levels: [
+        { code: "EE", name: "Exceeding Expectations", desc: "Top Tier Performance (80-100%). Ready for Pure Sciences & Complex Arts.", color: "text-green-400" },
+        { code: "ME", name: "Meeting Expectations", desc: "Solid Foundation (50-79%). Good fit for Humanities, Technical Skills.", color: "text-yellow-400" },
+        { code: "AE", name: "Approaching Expectations", desc: "Developing (30-49%). Focus on vocational training and hands-on skills.", color: "text-orange-400" },
+        { code: "BE", name: "Below Expectations", desc: "Needs Support (0-29%). Requires remedial attention.", color: "text-red-400" },
+    ]
+};
+
+export const TEXTBOOK_RECOMMENDATIONS = [
+    { subject: "Mathematics", title: "Comprehensive Secondary Maths", publisher: "KLB / Oxford", image: "https://textbookcentre.com/media/products/2020205000628.jpg" },
+    { subject: "Physics", title: "Secondary Physics Book 4", publisher: "Kenya Literature Bureau", image: "https://textbookcentre.com/media/products/2020205000574.jpg" },
+    { subject: "Biology", title: "Explore Biology", publisher: "Longhorn", image: "https://textbookcentre.com/media/products/2020205000994.jpg" },
+    { subject: "History", title: "Evolving World", publisher: "Oxford", image: "https://textbookcentre.com/media/products/1005000000030.jpg" },
+];
+
+export const AGENT_DIALOGUES = [
+    { text: "Niko hapa kukusaidia kuchagua!", lang: "Swahili", delay: 0 },
+    { text: "Mundu wa nyumba, ukwenda atia?", lang: "Kikuyu", delay: 2 },
+    { text: "Tubonge hapa nikusaidie!", lang: "Sheng", delay: 4 },
+    { text: "Make Informed Decisions with AI", lang: "English", delay: 6 },
+    { text: "Uria Kiuria Haha!", lang: "Kikuyu", delay: 8 },
+    { text: "Usijali, Agent Upili ako rada.", lang: "Sheng", delay: 10 },
+];
+
+export const ADS_DATA = [
+    {
+        id: "tbc",
+        title: "Textbook Centre Online",
+        desc: "Get all Senior Secondary Books delivered to your doorstep.",
+        cta: "Shop Now",
+        color: "from-orange-600 to-red-600",
+        image: "https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?w=800"
+    },
+    {
+        id: "girls_school",
+        title: "Precious Blood Riruta",
+        desc: "Excellence in STEM for the Girl Child. Admissions Open.",
+        cta: "Apply",
+        color: "from-purple-600 to-pink-600",
+        image: "https://images.unsplash.com/photo-1594537672205-d0c265e6406e?w=800"
+    },
+    {
+        id: "boys_school",
+        title: "Mangu High School",
+        desc: "Aviation & Engineering Giants. Join the League of Champions.",
+        cta: "Visit",
+        color: "from-blue-600 to-cyan-600",
+        image: "https://images.unsplash.com/photo-1549646467-ee6e40d8de8e?w=800"
+    }
+];
+
+export const EXAM_FORMAT = {
+    title: "Senior School Assessment Model",
+    desc: "Assessment is no longer just one exam. It is a mix of continuous cats and practicals.",
+    points: [
+        "70% Formative Assessment (School Based Projects)",
+        "30% Summative Assessment (KNEC Final Exam)",
+        "Mandatory Community Service Learning (CSL)",
+        "Practical competencies in chosen pathway"
+    ]
+};
+
 export const STEM_DEEP_DIVE = {
     title: "The STEM Pathway (Science, Technology, Engineering, Mathematics)",
     description: "The engine of the future world.",

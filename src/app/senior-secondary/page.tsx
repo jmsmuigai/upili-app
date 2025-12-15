@@ -59,31 +59,73 @@ export default function SeniorSecondaryPage() {
                     <DeepContentModules />
                 </div>
 
+                {/* NEW: JSEA Grading & Exam Structure */}
+                <div className="bg-slate-900 rounded-3xl p-8 text-white shadow-2xl border border-indigo-500/30">
+                    <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <Trophy className="text-yellow-400" /> JSEA Results & Expectations
+                    </h2>
+                    <div className="grid md:grid-cols-4 gap-4 mb-8">
+                        <div className="bg-white/10 p-4 rounded-xl border-l-4 border-green-500">
+                            <h3 className="text-xl font-black text-green-400">EE</h3>
+                            <p className="text-xs uppercase font-bold opacity-70">Exceeding</p>
+                            <p className="text-sm mt-1">Ready for pure sciences & complex arts.</p>
+                        </div>
+                        <div className="bg-white/10 p-4 rounded-xl border-l-4 border-yellow-500">
+                            <h3 className="text-xl font-black text-yellow-400">ME</h3>
+                            <p className="text-xs uppercase font-bold opacity-70">Meeting</p>
+                            <p className="text-sm mt-1">Solid foundation for Humanities.</p>
+                        </div>
+                        <div className="bg-white/10 p-4 rounded-xl border-l-4 border-orange-500">
+                            <h3 className="text-xl font-black text-orange-400">AE</h3>
+                            <p className="text-xs uppercase font-bold opacity-70">Approaching</p>
+                            <p className="text-sm mt-1">Focus on technical & vocational skills.</p>
+                        </div>
+                        <div className="bg-white/10 p-4 rounded-xl border-l-4 border-red-500">
+                            <h3 className="text-xl font-black text-red-400">BE</h3>
+                            <p className="text-xs uppercase font-bold opacity-70">Below</p>
+                            <p className="text-sm mt-1">Requires remedial support.</p>
+                        </div>
+                    </div>
+
+                    <h3 className="text-xl font-bold mb-4 border-b border-white/20 pb-2">Senior School Assessment Model</h3>
+                    <ul className="grid md:grid-cols-2 gap-4">
+                        <li className="flex items-center gap-3 bg-black/20 p-3 rounded-lg">
+                            <div className="w-8 h-8 rounded-full bg-cyan-600 flex items-center justify-center font-bold">70%</div>
+                            <span>Formative Assessment (School Projects)</span>
+                        </li>
+                        <li className="flex items-center gap-3 bg-black/20 p-3 rounded-lg">
+                            <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center font-bold">30%</div>
+                            <span>Summative Assessment (KNEC Exam)</span>
+                        </li>
+                    </ul>
+                </div>
+
                 {/* Existing Widgets Grid in 2 columns */}
                 <div className="grid lg:grid-cols-3 gap-8">
                     <div className="lg:col-span-2 space-y-8">
                         <SchoolFinder />
 
-                        {/* Resources */}
+                        {/* Resources / Textbooks */}
                         <section className="bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-800">
                             <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                                <BookOpen className="text-indigo-500" /> Books & Schemes of Work
+                                <BookOpen className="text-indigo-500" /> Recommended Textbooks (KICD Approved)
                             </h2>
-                            <div className="space-y-3">
-                                {["Form 4 Mathematics (Advanced)", "Physics: Mechanics & Waves", "Computer Studies: Python Basics", "History of East Africa"].map((book, i) => (
-                                    <div key={i} className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-200 group">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                                                PDF
-                                            </div>
-                                            <div>
-                                                <p className="font-medium">{book}</p>
-                                                <p className="text-xs text-slate-500">2.4 MB • Updated yesterday</p>
-                                            </div>
+                            <div className="grid md:grid-cols-2 gap-4">
+                                {[
+                                    { title: "Secondary Physics Book 4", pub: "KLB", img: "https://textbookcentre.com/media/products/2020205000574.jpg" },
+                                    { title: "Evolving World (History)", pub: "Oxford", img: "https://textbookcentre.com/media/products/1005000000030.jpg" },
+                                    { title: "Explore Biology", pub: "Longhorn", img: "https://textbookcentre.com/media/products/2020205000994.jpg" },
+                                    { title: "Comprehensive Maths", pub: "KLB", img: "https://textbookcentre.com/media/products/2020205000628.jpg" }
+                                ].map((book, i) => (
+                                    <div key={i} className="flex gap-4 p-4 rounded-xl border border-slate-100 hover:shadow-lg transition-all items-center">
+                                        <div className="w-16 h-20 bg-slate-200 rounded overflow-hidden flex-shrink-0">
+                                            <img src={book.img} alt={book.title} className="w-full h-full object-cover" />
                                         </div>
-                                        <button className="text-indigo-600 hover:text-indigo-800 p-2 hover:bg-indigo-50 rounded-full transition-colors">
-                                            <Download size={20} />
-                                        </button>
+                                        <div>
+                                            <h4 className="font-bold text-sm leading-tight">{book.title}</h4>
+                                            <p className="text-xs text-slate-500 mb-2">{book.pub}</p>
+                                            <button className="text-[10px] bg-red-600 text-white px-3 py-1 rounded-full font-bold">BUY NOW</button>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
