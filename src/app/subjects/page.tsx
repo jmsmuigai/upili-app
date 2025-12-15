@@ -46,12 +46,12 @@ export default function SubjectsPage() {
                                 <p className="text-sm font-medium text-slate-200">{sub.career}</p>
                             </div>
 
-                            <button
-                                onClick={() => setActiveSubject(sub.name)}
+                            <Link
+                                href={`/subjects/${encodeURIComponent(sub.name)}`}
                                 className="w-full py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/20 transition-all flex items-center justify-center gap-2 font-bold text-sm group-hover:bg-cyan-600 group-hover:text-white group-hover:border-transparent"
                             >
                                 <Bot size={18} /> ACTIVATE GEMINI CHAT
-                            </button>
+                            </Link>
                         </motion.div>
                     ))}
                 </div>
