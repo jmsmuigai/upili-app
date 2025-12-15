@@ -8,8 +8,8 @@ import { TALENT_CALIBRATION_QUESTIONS } from "@/data/upili_content";
 
 export default function UpiliDataEngine() {
     const router = useRouter();
-    const [step, setStep] = useState(0);
-    const [data, setData] = useState({ age: "", school: "", talent: "", hobby: "" });
+    const [mode, setMode] = useState<"home" | "scan" | "processing" | "result">("home");
+    const [userData, setUserData] = useState({ name: "", dob: "", school: "", location: "rural" });
     const [deepScanActive, setDeepScanActive] = useState(false);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [scanResults, setScanResults] = useState<string[]>([]); // Store 'Yes' answers types
@@ -121,105 +121,47 @@ export default function UpiliDataEngine() {
 
     // INITIAL MODE
     return (
-        <div className="w-full max-w-2xl mx-auto">
-            <AnimatePresence mode="wait">
-
-                <motion.div
-                    key="form"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl shadow-2xl"
-                >
-                    {/* Progress Bar */}
-                    <div className="flex gap-2 mb-8">
-                        {[0, 1, 2, 3].map((i) => (
-                            <div key={i} className={`h-2 flex-1 rounded-full transition-all duration-500 ${i <= step ? "bg-cyan-400" : "bg-white/20"}`} />
-                        ))}
-                    </div>
-
-                    <h2 className="text-3xl font-bold text-white mb-6">
-                        {step === 0 && "Let's calibrate your profile."}
-                        {step === 1 && "Where is your foundation?"}
-                        {step === 2 && "Uncover your hidden variables."}
-                        {step === 3 && "What fuels your engine?"}
-                    </h2>
-
-                    <div className="space-y-6">
-                        {step === 0 && (
-                            <div>
-                                <label className="text-cyan-200 text-sm font-bold uppercase tracking-wider mb-2 block">Your Age</label>
-                                <input
-                                    type="number"
-                                    value={data.age}
-                                    onChange={(e) => setData({ ...data, age: e.target.value })}
-                                    className="w-full bg-black/40 border border-cyan-500/30 text-white rounded-xl px-4 py-4 text-xl focus:ring-2 focus:ring-cyan-400 outline-none"
-                                    placeholder="e.g. 14"
-                                    autoFocus
-                                />
-                            </div>
-                        )}
-
-                        {step === 1 && (
-                            <div>
-                                <label className="text-cyan-200 text-sm font-bold uppercase tracking-wider mb-2 block">Previous School</label>
-                                <input
-                                    value={data.school}
-                                    onChange={(e) => setData({ ...data, school: e.target.value })}
-                                    className="w-full bg-black/40 border border-cyan-500/30 text-white rounded-xl px-4 py-4 text-xl focus:ring-2 focus:ring-cyan-400 outline-none"
-                                    placeholder="e.g. Milimani Primary"
-                                    autoFocus
-                                />
-                            </div>
-                        )}
-
-                        {step === 2 && (
-                            <div>
-                                <label className="text-cyan-200 text-sm font-bold uppercase tracking-wider mb-2 block">Your Superpower (Talent)</label>
-                                <select
-                                    value={data.talent}
-                                    onChange={(e) => setData({ ...data, talent: e.target.value })}
-                                    className="w-full bg-black/40 border border-cyan-500/30 text-white rounded-xl px-4 py-4 text-xl focus:ring-2 focus:ring-cyan-400 outline-none bg-slate-900"
-                                >
-                                    <option value="">Select Talent...</option>
                                     <option value="math">Numbers & Logic</option>
                                     <option value="art">Drawing & Creativity</option>
                                     <option value="lead">Leadership & Speaking</option>
                                     <option value="sport">Athletics & Motion</option>
                                     <option value="tech">Computers & Gadgets</option>
-                                </select>
-                            </div>
-                        )}
+                                </select >
+                            </div >
+                        )
+}
 
-                        {step === 3 && (
-                            <div>
-                                <label className="text-cyan-200 text-sm font-bold uppercase tracking-wider mb-2 block">Favorite Hobby</label>
-                                <input
-                                    value={data.hobby}
-                                    onChange={(e) => setData({ ...data, hobby: e.target.value })}
-                                    className="w-full bg-black/40 border border-cyan-500/30 text-white rounded-xl px-4 py-4 text-xl focus:ring-2 focus:ring-cyan-400 outline-none"
-                                    placeholder="e.g. Gaming, Farming, Reading..."
-                                    autoFocus
-                                />
-                            </div>
-                        )}
-
-                        <button
-                            onClick={handleNext}
-                            disabled={
-                                (step === 0 && !data.age) ||
-                                (step === 1 && !data.school) ||
-                                (step === 2 && !data.talent) ||
-                                (step === 3 && !data.hobby)
-                            }
-                            className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/30 transition-all flex items-center justify-center gap-2 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            {step === 3 ? "Run Deep Intelligence Scan" : "Next Data Point"} <ArrowRight />
-                        </button>
-                    </div>
-                </motion.div>
-
-            </AnimatePresence>
+{
+    step === 3 && (
+        <div>
+            <label className="text-cyan-200 text-sm font-bold uppercase tracking-wider mb-2 block">Favorite Hobby</label>
+            <input
+                value={data.hobby}
+                onChange={(e) => setData({ ...data, hobby: e.target.value })}
+                className="w-full bg-black/40 border border-cyan-500/30 text-white rounded-xl px-4 py-4 text-xl focus:ring-2 focus:ring-cyan-400 outline-none"
+                placeholder="e.g. Gaming, Farming, Reading..."
+                autoFocus
+            />
         </div>
+    )
+}
+
+<button
+    onClick={handleNext}
+    disabled={
+        (step === 0 && !data.age) ||
+        (step === 1 && !data.school) ||
+        (step === 2 && !data.talent) ||
+        (step === 3 && !data.hobby)
+    }
+    className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/30 transition-all flex items-center justify-center gap-2 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+>
+    {step === 3 ? "Run Deep Intelligence Scan" : "Next Data Point"} <ArrowRight />
+</button>
+                    </div >
+                </motion.div >
+
+            </AnimatePresence >
+        </div >
     );
 }
