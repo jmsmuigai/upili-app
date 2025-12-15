@@ -1,6 +1,6 @@
 {
-    "name": "UPILI Agentic Guide",
-    "short_name": "UPILI",
+    "name": "Career Smart Agent",
+    "short_name": "CareerSmart",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#0a0a0a",

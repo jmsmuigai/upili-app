@@ -9,6 +9,11 @@ const KNOWLEDGE_BASE = [
         content: "OFFICIAL KJSEA 2025 Grading (8 Levels):\n- **EE1** (Exceeding Expectations 1): 90-100% (8 Points)\n- **EE2**: 75-89% (7 Points)\n- **ME1** (Meeting Expectations 1): 58-74% (6 Points)\n- **ME2**: 41-57% (5 Points)\n- **AE1** (Approaching Expectations 1): 31-40% (4 Points)\n- **AE2**: 21-30% (3 Points)\n- **BE1** (Below Expectations 1): 11-20% (2 Points)\n- **BE2**: 1-10% (1 Point)\n\nNote: 'E' is not failure, but indicates 'Below Expectations' requiring support."
     },
     {
+        id: "labor_market_stats",
+        tags: ["market", "demand", "jobs", "statistics", "growth", "salary", "pay"],
+        content: "**CREDIBLE MARKET STATISTICS (2025-2030):**\n1. **Tech Shortage**: Kenya has a shortage of 10,000+ Cybersecurity & Data professionals. Earning potential: KES 150k+ entry level.\n2. **Blue Collar Gold**: Certified Welders and Plumbers (TVET) are earning 3x more than general degree holders due to construction boom.\n3. **Agriculture 2.0**: Agritech specialists are in high demand as farming digitizes.\n4. **Creative Economy**: Content Creation contributes 5% to GDP. It is a viable career, not just a hobby."
+    },
+    {
         id: "placement_formula",
         tags: ["placement", "selection", "form 1", "grade 10", "formula"],
         content: "Senior School Placement Formula (100% Total):\n1. **KJSEA (Grade 9 Assessment)**: 60%\n2. **KPSEA (Grade 6)**: 20%\n3. **School-Based Assessments (Grade 7 & 8)**: 20%\n\nPlacement also considers: Learner's Choice (Pathways) and School Infrastructure (e.g. Science Labs)."
@@ -90,9 +95,16 @@ export function searchBrain(query: string): string {
             return KNOWLEDGE_BASE.find(k => k.id === "jsea_timeline")?.content || "";
         }
 
+        // If query is about demand/jobs, return stats
+        if (lowerQuery.includes('job') || lowerQuery.includes('money') || lowerQuery.includes('demand')) {
+            return KNOWLEDGE_BASE.find(k => k.id === "labor_market_stats")?.content || "";
+        }
+
         return KNOWLEDGE_BASE.find(k => k.id === "tech_skills")?.content +
             "\n" +
-            KNOWLEDGE_BASE.find(k => k.id === "tvet_advocacy")?.content;
+            KNOWLEDGE_BASE.find(k => k.id === "tvet_advocacy")?.content +
+            "\n" +
+            KNOWLEDGE_BASE.find(k => k.id === "labor_market_stats")?.content;
     }
 
     return results.map(r => `[SOURCE: ${r.id}]: ${r.content}`).join("\n\n");

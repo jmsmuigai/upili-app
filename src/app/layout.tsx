@@ -7,8 +7,8 @@ import { ConnectivityMonitor } from '@/components/ConnectivityMonitor';
 const outfit = Outfit({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-    title: 'UPILI | Agentic Career Guidance',
-    description: 'AI-Powered Career Pathways for the Competency Based Curriculum',
+    title: 'Career Smart | Intelligent Guidance',
+    description: 'AI-Powered Career Pathways & Market Intelligence for JSEA',
     manifest: '/manifest.json',
     icons: {
         apple: '/icon-192x192.png',

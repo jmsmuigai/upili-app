@@ -31,14 +31,15 @@ export default function Home() {
                     </div>
 
                     <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
-                        Your AI <br />
+                        Career <br />
                         <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-fuchsia-400 to-white">
-                            Life Coach
+                            Smart
                         </span>
                     </h1>
 
                     <p className="text-xl text-gray-400 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                        UPILI isn't just a career guide. It's a sentient agent that helps you pick a path, learn High-Income Skills, and dominate the future.
+                        Welcome to the Future of Guidance. <br />
+                        We use **Market Algorithms** to match your talent with High-Growth Careers. Don't just guess. Be Smart.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
