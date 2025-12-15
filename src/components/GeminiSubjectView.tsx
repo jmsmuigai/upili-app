@@ -1,39 +1,101 @@
 "use client";
 
 import { useChat } from "ai/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Bot, AlertTriangle, Briefcase, GitMerge, ChevronLeft } from "lucide-react";
 import Link from "next/link";
+import AgenticReasoning from "./AgenticReasoning";
+import MultiAgentPanel, { AGENT_CONFIGS } from "./MultiAgentPanel";
+import AutoUpdateManager from "./AutoUpdateManager";
 
 interface GeminiSubjectViewProps {
     subject: string;
 }
 
 export default function GeminiSubjectView({ subject }: GeminiSubjectViewProps) {
-    const { messages, append, isLoading } = useChat({
+    const { messages, append, isLoading, reload } = useChat({
         api: "/api/chat",
     });
 
     const hasFetched = useRef(false);
+    const [reasoningSteps, setReasoningSteps] = useState<any[]>([]);
+    const [agentAnalyses, setAgentAnalyses] = useState<any[]>([]);
+    const [lastUpdated, setLastUpdated] = useState(new Date());
+    const [isRefreshing, setIsRefreshing] = useState(false);
+
+    const fetchAnalysis = async () => {
+        setIsRefreshing(true);
+
+        // Simulate reasoning steps
+        setReasoningSteps([
+            { id: "1", text: "Analyzing subject complexity and prerequisites...", status: "thinking" },
+        ]);
+
+        setTimeout(() => {
+            setReasoningSteps(prev => [
+                ...prev.map(s => ({ ...s, status: "complete", confidence: 92 })),
+                { id: "2", text: "Evaluating job market demand and future trends...", status: "thinking" },
+            ]);
+        }, 1000);
+
+        setTimeout(() => {
+            setReasoningSteps(prev => [
+                ...prev.map(s => ({ ...s, status: "complete" })),
+                { id: "3", text: "Consulting specialist agents for multi-dimensional analysis...", status: "thinking" },
+            ]);
+        }, 2000);
+
+        setTimeout(() => {
+            setReasoningSteps(prev => prev.map(s => ({ ...s, status: "complete" })));
+        }, 3000);
+
+        // Trigger the specialized prompt with multi-agent instruction
+        await append({
+            role: "user",
+            content: `You are a multi-agent AI system analyzing "${subject}" for Kenyan senior secondary students.
+
+**CRITICAL: Respond as 4 SEPARATE AGENTS, each with their own analysis:**
+
+1. **CAREER AGENT** 🎯
+   - Analyze job market demand (Kenya & Global)
+   - List 5 specific careers with salary ranges
+   - Rate market demand (1-100%)
+
+2. **ACADEMIC AGENT** 📚
+   - Assess difficulty level and prerequisites
+   - Identify key skills needed
+   - Suggest study strategies
+
+3. **WELLNESS AGENT** 💚
+   - Evaluate work-life balance in this field
+   - Mental health considerations
+   - Recommend complementary activities
+
+4. **FUTURE AGENT** 🚀
+   - AI impact by 2030
+   - Automation risk assessment
+   - Future-proofing strategies
+
+Format each agent's response clearly with their name, analysis, recommendation, and confidence score (0-100%).
+
+Then provide:
+- **Deep Definition**: Philosophical & practical understanding
+- **Winning Combinations**: Best subject pairings
+- **What to Avoid**: Common pitfalls
+- **Overall Recommendation**: Synthesized from all agents
+
+Tone: Professional, inspiring, data-driven. Use Kenya context.`
+        });
+
+        setLastUpdated(new Date());
+        setIsRefreshing(false);
+    };
 
     useEffect(() => {
         if (!hasFetched.current && subject) {
             hasFetched.current = true;
-            // Trigger the specialized prompt
-            append({
-                role: "user",
-                content: `Generate a comprehensive, deep-dive guide for the Senior Secondary subject: "${subject}". 
-        
-        Format the response as a structured JSON-like object (but valid markdown text) with these Sections:
-        1. **Deep Definition**: What is it really? (Philosophical & Practical)
-        2. **Real World Jobs**: List 5 specific, modern jobs (include AI-related ones).
-        3. **Winning Combinations**: What other subjects go well with this?
-        4. **What to Avoid**: Common mistakes or misconceptions.
-        5. **Future Outlook**: How AI affects this field in 2030.
-        
-        Tone: Professional, Inspiring, "Google-Deep", Intelligent. Use Kenya context where applicable.`
-            });
+            fetchAnalysis();
         }
     }, [subject, append]);
 
@@ -72,6 +134,18 @@ export default function GeminiSubjectView({ subject }: GeminiSubjectViewProps) {
                         AI-GENERATED DEEP DIVE
                     </p>
                 </header>
+
+                {/* Auto-Update Manager */}
+                <div className="mb-8 flex justify-center">
+                    <AutoUpdateManager
+                        lastUpdated={lastUpdated}
+                        onRefresh={fetchAnalysis}
+                        isRefreshing={isRefreshing}
+                    />
+                </div>
+
+                {/* Reasoning Process */}
+                <AgenticReasoning steps={reasoningSteps} isActive={reasoningSteps.length > 0} />
 
                 {isLoading && !latestMessage ? (
                     <div className="text-center py-20">
