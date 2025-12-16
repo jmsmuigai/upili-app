@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BrainCircuit, ChevronRight, User, BookOpen, Heart, Activity, Sparkles, AlertTriangle } from "lucide-react";
 
+import Link from "next/link";
 import { analyzeStudentProfile } from "@/app/actions";
 import { ThreatRadar } from "../visuals/ThreatRadar";
 
@@ -138,14 +139,22 @@ export function InterviewOrchestrator() {
                                         The transition from JSEA to Senior School is critical.
                                         Don&apos;t just guess. Use our military-grade AI to analyze your strengths against the automated future.
                                     </p>
-                                    <motion.button
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        onClick={nextStep}
-                                        className="flex items-center gap-4 px-8 py-5 bg-cyber-DEFAULT text-black text-lg font-bold rounded-lg hover:bg-white transition-all shadow-[0_0_30px_rgba(0,243,255,0.3)]"
-                                    >
-                                        INITIALIZE PROTOCOL <ChevronRight className="w-6 h-6" />
-                                    </motion.button>
+                                    <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                                        <motion.button
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            onClick={() => setStep("infographic")}
+                                            className="px-8 py-4 bg-cyan-500 text-black font-bold rounded-lg hover:bg-cyan-400 transition-colors shadow-[0_0_20px_rgba(6,182,212,0.5)] flex items-center justify-center gap-2"
+                                        >
+                                            <BrainCircuit className="w-5 h-5" />
+                                            Initialize Protocol
+                                        </motion.button>
+
+                                        <Link href="/senior-school" className="px-8 py-4 bg-transparent border border-gray-700 text-gray-300 font-bold rounded-lg hover:border-cyan-500 hover:text-cyan-400 transition-colors flex items-center justify-center gap-2">
+                                            <BookOpen className="w-5 h-5" />
+                                            View Curriculum Matrix
+                                        </Link>
+                                    </div>
                                 </div>
                                 <div className="relative group">
                                     {/* Floating Hologram Effect */}
