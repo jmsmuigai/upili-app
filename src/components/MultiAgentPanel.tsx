@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 interface AgentAnalysis {
     agent: string;
-    icon: any;
+    icon: React.ElementType;
     color: string;
     analysis: string;
     confidence: number;
@@ -49,8 +49,8 @@ export default function MultiAgentPanel({ subject, analyses }: MultiAgentPanelPr
                             key={index}
                             onClick={() => setActiveAgent(index)}
                             className={`p-4 rounded-xl border transition-all ${activeAgent === index
-                                    ? `${agent.color} border-opacity-100 shadow-lg`
-                                    : "bg-slate-800/50 border-slate-700 hover:bg-slate-800"
+                                ? `${agent.color} border-opacity-100 shadow-lg`
+                                : "bg-slate-800/50 border-slate-700 hover:bg-slate-800"
                                 }`}
                         >
                             <Icon className={activeAgent === index ? "text-white" : "text-slate-400"} size={24} />

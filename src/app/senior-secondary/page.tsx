@@ -1,13 +1,12 @@
 "use client";
 
-import Link from "next/link";
-import { BookOpen, Download, Trophy, Star, Sparkles, ArrowRight } from "lucide-react";
+import { BookOpen, Trophy } from "lucide-react";
 import SmartAdvisor from "@/components/SmartAdvisor";
 import GameCenter from "@/components/GameCenter";
 import SchoolFinder from "@/components/SchoolFinder";
 import MindNoteGenerator from "@/components/MindNoteGenerator";
 import DeepContentModules from "@/components/DeepContentModules";
-import { SENIOR_PATHWAYS, COMBINATIONS, ADVICE_TIPS } from "@/data/senior_secondary";
+
 import { motion } from "framer-motion";
 
 export default function SeniorSecondaryPage() {

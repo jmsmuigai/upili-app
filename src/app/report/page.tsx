@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Download, Share2, Sparkles, Brain } from 'lucide-react';
 
 export default function ReportPage() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [profileData, setProfileData] = useState<any>(null);
 
     const handleDownload = () => {
@@ -33,7 +34,7 @@ export default function ReportPage() {
                             <span className="text-sm font-medium">Phase 1: Deep Profiling</span>
                         </motion.div>
                         <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-violet-400 to-purple-400">
-                            Let's Known You First
+                            Let&apos;s Know You First
                         </h1>
                         <p className="text-gray-400 max-w-lg mx-auto">
                             Before we map your future, Mshauri needs to understand your past, your passions, and your hidden talents.
@@ -60,7 +61,7 @@ export default function ReportPage() {
                         <Brain className="h-12 w-12 text-white" />
                     </div>
                     <h1 className="text-5xl font-bold text-white tracking-tight">
-                        {profileData.nickname}'s Blueprint
+                        {profileData.nickname}&apos;s Blueprint
                     </h1>
                     <p className="text-xl text-upili-300 font-medium">{profileData.personality}</p>
                 </motion.div>

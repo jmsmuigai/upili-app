@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import Image from "next/image";
 import { SENIOR_SCHOOLS } from "@/data/senior_secondary";
 import { Search, MapPin, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
@@ -8,10 +9,11 @@ import { motion } from "framer-motion";
 export default function SchoolFinder() {
     const [term, setTerm] = useState("");
 
-    const filtered = SENIOR_SCHOOLS.filter(s =>
+
+    const filtered = useMemo(() => SENIOR_SCHOOLS.filter(s =>
         s.name.toLowerCase().includes(term.toLowerCase()) ||
         s.location.toLowerCase().includes(term.toLowerCase())
-    );
+    ), [term]);
 
     return (
         <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-xl border border-slate-100 dark:border-slate-800">
@@ -39,8 +41,15 @@ export default function SchoolFinder() {
                         transition={{ delay: i * 0.05 }}
                         className="flex gap-4 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 border border-transparent hover:border-slate-200 transition-all group cursor-pointer"
                     >
-                        <div className="w-16 h-16 rounded-lg overflow-hidden bg-slate-200 flex-shrink-0">
-                            <img src={school.image} alt={school.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <div className="w-16 h-16 rounded-lg overflow-hidden bg-slate-200 flex-shrink-0 relative">
+                            <Image
+                                src={school.image}
+                                alt={school.name}
+                                width={64}
+                                height={64}
+                                unoptimized
+                                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                            />
                         </div>
                         <div className="flex-1">
                             <h3 className="font-bold text-slate-800 dark:text-white flex items-center gap-2">
@@ -58,7 +67,7 @@ export default function SchoolFinder() {
                     </motion.div>
                 ))}
                 {filtered.length === 0 && (
-                    <p className="text-center text-slate-400 py-8">No schools found matching "{term}"</p>
+                    <p className="text-center text-slate-400 py-8">No schools found matching &quot;{term}&quot;</p>
                 )}
             </div>
         </div>

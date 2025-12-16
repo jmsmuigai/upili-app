@@ -18,7 +18,7 @@ export default function SubjectsPage() {
                     ALL SUBJECTS DECODED
                 </h1>
                 <p className="text-center text-slate-400 mb-12 max-w-2xl mx-auto">
-                    Deep dive into every single subject. Click "Activate Chat" to ask Gemini specific questions about that subject.
+                    Deep dive into every single subject. Click &quot;Activate Chat&quot; to ask Gemini specific questions about that subject.
                 </p>
 
                 <div className="space-y-16">
@@ -31,9 +31,9 @@ export default function SubjectsPage() {
                                 {/* Category Header */}
                                 <div className="flex items-center gap-4 mb-8">
                                     <div className={`h-8 w-2 rounded-full ${category === "STEM" ? "bg-blue-500" :
-                                            category === "Social" ? "bg-amber-500" :
-                                                category === "Arts" ? "bg-fuchsia-500" :
-                                                    "bg-green-500"
+                                        category === "Social" ? "bg-amber-500" :
+                                            category === "Arts" ? "bg-fuchsia-500" :
+                                                "bg-green-500"
                                         }`} />
                                     <h2 className="text-3xl font-black text-white uppercase tracking-wider">
                                         {category} <span className="text-slate-500 text-lg font-normal capitalize">pathways</span>

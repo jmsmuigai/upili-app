@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { RefreshCw, Clock, CheckCircle } from "lucide-react";
+import { RefreshCw, Clock } from "lucide-react";
 
 interface AutoUpdateManagerProps {
     lastUpdated: Date;

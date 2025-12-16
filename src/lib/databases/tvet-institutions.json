@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Kabete National Polytechnic",
+        "location": "Nairobi",
+        "specialties": [
+            "Engineering",
+            "Business",
+            "IT"
+        ],
+        "courses": [
+            "Diploma in Electrical Engineering",
+            "Certificate in Plumbing",
+            "Cybersecurity"
+        ],
+        "ai_relevance": "High demand for manual skills plus digital literacy."
+    },
+    {
+        "name": "Nyeri National Polytechnic",
+        "location": "Nyeri",
+        "specialties": [
+            "Agriculture",
+            "Automotive"
+        ],
+        "courses": [
+            "Diploma in Automotive Engineering",
+            "Smart Agriculture"
+        ],
+        "ai_relevance": "Automated farming systems are the future."
+    },
+    {
+        "name": "Kisumu National Polytechnic",
+        "location": "Kisumu",
+        "specialties": [
+            "Building & Civil",
+            "Textile"
+        ],
+        "courses": [
+            "Civil Engineering",
+            "Fashion Design & Technology"
+        ],
+        "ai_relevance": "3D Printing construction and AI fashion design."
+    },
+    {
+        "name": "Mombasa Technical Training Institute",
+        "location": "Mombasa",
+        "specialties": [
+            "Hospitality",
+            "Marine Engineering"
+        ],
+        "courses": [
+            "Marine Engineering",
+            "Hotel Management"
+        ],
+        "ai_relevance": "Smart logistics and AI-driven tourism experiences."
+    }
+]

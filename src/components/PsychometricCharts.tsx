@@ -3,6 +3,7 @@
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Tooltip } from 'recharts';
 import { Card, CardContent } from '@/components/ui/card';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function PsychometricCharts({ data }: { data: any }) {
     if (!data) return null;
 

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { generateDummyLearners, processLearner, Learner } from '@/lib/simulator';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, RotateCw, Download, Database, Server, Cpu, Globe } from 'lucide-react';
+import { Play, RotateCw, Database, Server, Cpu } from 'lucide-react';
 
 export default function AdminPage() {
     const [learners, setLearners] = useState<Learner[]>([]);

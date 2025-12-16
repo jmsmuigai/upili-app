@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+// import { Input } from '@/components/ui/input';
 import { Send, ThumbsUp, ThumbsDown, MessageSquare } from 'lucide-react';
 
 export default function FeedbackPage() {

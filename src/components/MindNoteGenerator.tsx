@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Download, Share2, Sparkles } from "lucide-react";
+import { Download, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function MindNoteGenerator() {
@@ -25,7 +25,7 @@ export default function MindNoteGenerator() {
                 </div>
 
                 <h2 className="text-2xl font-bold mb-2">Create Your Vision</h2>
-                <p className="text-white/80 text-sm mb-6">Commit to your future. Generate a colorful Mind Note to remind you of your "Why".</p>
+                <p className="text-white/80 text-sm mb-6">Commit to your future. Generate a colorful Mind Note to remind you of your &quot;Why&quot;.</p>
 
                 {!generated ? (
                     <div className="w-full space-y-4">

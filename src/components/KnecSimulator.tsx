@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Download, Database, Play, CheckCircle, Smartphone } from 'lucide-react';
-import { BrainGym } from '@/components/BrainGym';
 
 export function KnecSimulator() {
     const [status, setStatus] = useState<"idle" | "mining" | "success">("idle");
@@ -64,7 +63,7 @@ export function KnecSimulator() {
 
                     {/* Console Output */}
                     <div className="bg-black rounded-lg p-4 font-mono text-xs h-40 overflow-y-auto border border-white/10 shadow-inner">
-                        <div className="text-gray-500 mb-2">// System Logs</div>
+                        <div className="text-gray-500 mb-2">{`// System Logs`}</div>
                         {log.map((line, i) => (
                             <motion.div
                                 key={i}

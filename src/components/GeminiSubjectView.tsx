@@ -3,10 +3,9 @@
 import { useChat } from "ai/react";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Bot, AlertTriangle, Briefcase, GitMerge, ChevronLeft } from "lucide-react";
+import { Sparkles, Briefcase, GitMerge, ChevronLeft, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 import AgenticReasoning from "./AgenticReasoning";
-import MultiAgentPanel, { AGENT_CONFIGS } from "./MultiAgentPanel";
 import AutoUpdateManager from "./AutoUpdateManager";
 
 interface GeminiSubjectViewProps {
@@ -14,13 +13,13 @@ interface GeminiSubjectViewProps {
 }
 
 export default function GeminiSubjectView({ subject }: GeminiSubjectViewProps) {
-    const { messages, append, isLoading, reload } = useChat({
+    const { messages, append, isLoading } = useChat({
         api: "/api/chat",
     });
 
     const hasFetched = useRef(false);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [reasoningSteps, setReasoningSteps] = useState<any[]>([]);
-    const [agentAnalyses, setAgentAnalyses] = useState<any[]>([]);
     const [lastUpdated, setLastUpdated] = useState(new Date());
     const [isRefreshing, setIsRefreshing] = useState(false);
 
@@ -97,6 +96,7 @@ Tone: Professional, inspiring, data-driven. Use Kenya context.`
             hasFetched.current = true;
             fetchAnalysis();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [subject, append]);
 
     // Extract the latest AI message

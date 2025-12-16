@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CheckCircle, Cpu, Shield, Bot } from "lucide-react";
+import { Cpu, Shield, Bot } from "lucide-react";
 
 export default function AboutPage() {
     return (
@@ -16,7 +16,7 @@ export default function AboutPage() {
                             <h2 className="text-2xl font-bold">1. The Data Engine</h2>
                         </div>
                         <p className="text-lg text-slate-600 dark:text-slate-300">
-                            Start on the home page. Enter your details and let our "Deep Scan" algorithm ask you a few questions. This calibrates your profile based on 40+ psychological factors to suggest the best path for you.
+                            Start on the home page. Enter your details and let our &quot;Deep Scan&quot; algorithm ask you a few questions. This calibrates your profile based on 40+ psychological factors to suggest the best path for you.
                         </p>
                     </section>
 
@@ -28,7 +28,7 @@ export default function AboutPage() {
                             <h2 className="text-2xl font-bold">2. Engage Mshauri (The Agent)</h2>
                         </div>
                         <p className="text-lg text-slate-600 dark:text-slate-300">
-                            Use the chat bubbles or the "Activate Gemini" buttons on the Subjects page to talk to our AI. Ask deep questions like "Is Physics hard?" or "Does Art pay well in Kenya?". The agent is trained to be kind, humble, and detailed.
+                            Use the chat bubbles or the &quot;Activate Gemini&quot; buttons on the Subjects page to talk to our AI. Ask deep questions like &quot;Is Physics hard?&quot; or &quot;Does Art pay well in Kenya?&quot;. The agent is trained to be kind, humble, and detailed.
                         </p>
                     </section>
 
@@ -40,7 +40,7 @@ export default function AboutPage() {
                             <h2 className="text-2xl font-bold">3. Wellness & Responsibility</h2>
                         </div>
                         <p className="text-lg text-slate-600 dark:text-slate-300">
-                            Success isn't just grades. Read our "Responsible Living" guides to stay safe, healthy, and focused. Avoid distractions and make smart life choices.
+                            Success isn&apos;t just grades. Read our &quot;Responsible Living&quot; guides to stay safe, healthy, and focused. Avoid distractions and make smart life choices.
                         </p>
                     </section>
 

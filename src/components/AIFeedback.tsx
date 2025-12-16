@@ -13,7 +13,7 @@ export function AIFeedback() {
         <div className="mt-8 p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                 <BookOpen className="h-5 w-5 text-upili-300" />
-                Mshauri's Learning Loop
+                Mshauri&apos;s Learning Loop
             </h3>
 
             <p className="text-gray-400 mb-4 text-sm">

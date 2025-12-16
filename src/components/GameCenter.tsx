@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 export default function GameCenter() {
     const [activeGame, setActiveGame] = useState<"quiz" | "memory">("quiz");
@@ -21,8 +21,8 @@ export default function GameCenter() {
                 <button
                     onClick={() => setActiveGame("quiz")}
                     className={`px-6 py-2 rounded-full font-bold transition-all ${activeGame === "quiz"
-                            ? "bg-orange-500 text-white shadow-lg scale-105"
-                            : "bg-white text-orange-500 hover:bg-orange-50"
+                        ? "bg-orange-500 text-white shadow-lg scale-105"
+                        : "bg-white text-orange-500 hover:bg-orange-50"
                         }`}
                 >
                     Career Quiz
@@ -30,8 +30,8 @@ export default function GameCenter() {
                 <button
                     onClick={() => setActiveGame("memory")}
                     className={`px-6 py-2 rounded-full font-bold transition-all ${activeGame === "memory"
-                            ? "bg-green-500 text-white shadow-lg scale-105"
-                            : "bg-white text-green-500 hover:bg-green-50"
+                        ? "bg-green-500 text-white shadow-lg scale-105"
+                        : "bg-white text-green-500 hover:bg-green-50"
                         }`}
                 >
                     Memory Match

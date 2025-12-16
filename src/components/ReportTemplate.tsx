@@ -1,9 +1,9 @@
 "use client"
 
-import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Zap, Briefcase, Award, Code, Lightbulb, Star, Download } from 'lucide-react';
+import { Zap, Briefcase, Code, Lightbulb, Star, Download } from 'lucide-react';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function ReportTemplate({ data }: { data: any }) {
     if (!data) return null;
 
@@ -38,7 +38,7 @@ export function ReportTemplate({ data }: { data: any }) {
                                 <p className="text-green-300 text-sm font-bold flex items-center gap-2 print:text-green-700">
                                     <Lightbulb className="h-4 w-4" /> Market Intelligence:
                                 </p>
-                                <p className="text-gray-200 text-sm italic print:text-black">"{data.market_reason}"</p>
+                                <p className="text-gray-200 text-sm italic print:text-black">&quot;{data.market_reason}&quot;</p>
                             </div>
                         )}
                     </CardContent>
@@ -51,7 +51,7 @@ export function ReportTemplate({ data }: { data: any }) {
                         <div className="text-xs font-bold text-pink-300 uppercase tracking-widest mb-2">Your Side Hustle</div>
                         <h3 className="text-3xl font-black text-white mb-4">{data.side_hustle || "Content Creation"}</h3>
                         <p className="text-gray-300 leading-relaxed z-10 relative">
-                            Don't limit yourself. Use your {data.stats?.creativity > 70 ? "creative" : "analytical"} talents to build a secondary income stream.
+                            Don&apos;t limit yourself. Use your {data.stats?.creativity > 70 ? "creative" : "analytical"} talents to build a secondary income stream.
                         </p>
                     </CardContent>
                 </Card>
@@ -67,7 +67,7 @@ export function ReportTemplate({ data }: { data: any }) {
                             <div className="text-xs font-bold text-cyan-300 uppercase tracking-widest mb-2">Future Proofing Protocol</div>
                             <h3 className="text-2xl font-bold text-white mb-2">{data.tech_tip || "Learn Generative AI"}</h3>
                             <p className="text-gray-300">
-                                AI won't replace you, but a person using AI will. Start learning at <a href="https://kaggle.com" className="text-cyan-400 underline">Kaggle</a> or <a href="https://aistudio.google.com" className="text-cyan-400 underline">Google AI Studio</a> today.
+                                AI won&apos;t replace you, but a person using AI will. Start learning at <a href="https://kaggle.com" className="text-cyan-400 underline">Kaggle</a> or <a href="https://aistudio.google.com" className="text-cyan-400 underline">Google AI Studio</a> today.
                             </p>
                         </div>
                     </CardContent>

@@ -20,7 +20,7 @@ export default function JSEAGuide() {
                         JSEA EXPLAINED
                     </h1>
                     <p className="text-xl text-gray-300">
-                        The <strong>Junior Secondary Education Assessment</strong> is not just an exam. It's the fork in the road where you choose your destiny.
+                        The <strong>Junior Secondary Education Assessment</strong> is not just an exam. It&apos;s the fork in the road where you choose your destiny.
                     </p>
                 </div>
 

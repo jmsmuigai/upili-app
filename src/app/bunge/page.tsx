@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
-import { MessageSquare, ThumbsUp, Users, Send } from 'lucide-react';
+import { MessageSquare, ThumbsUp, Send } from 'lucide-react';
 import { BrainGym } from '@/components/BrainGym';
 
 const INITIAL_POSTS = [

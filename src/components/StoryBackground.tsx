@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const IMAGES = [
     // Confused/Studying Students
@@ -37,10 +38,13 @@ export default function StoryBackground() {
                 >
                     {/* Dark overlay for text readability */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/60 z-10" />
-                    <img
+                    <Image
                         src={IMAGES[index]}
                         alt="Education Story"
-                        className="w-full h-full object-cover opacity-60"
+                        fill
+                        unoptimized
+                        priority
+                        className="object-cover opacity-60"
                     />
                 </motion.div>
             </AnimatePresence>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Info, Brain, Globe, Palette, Shield, TrendingUp, Cpu } from "lucide-react";
+import { Brain, Globe, Palette, Shield, TrendingUp, Cpu } from "lucide-react";
 import { STEM_DEEP_DIVE, SOCIAL_SCIENCES_DEEP_DIVE, ARTS_SPORTS_MEGA, WELLNESS_ADVICE, MARKET_ANALYSIS } from "@/data/upili_content";
 
 export default function DeepContentModules() {
@@ -38,7 +38,7 @@ export default function DeepContentModules() {
             {/* Social Sciences (Localized) */}
             <section className="bg-amber-50 dark:bg-amber-950/30 rounded-3xl p-8 border-2 border-amber-200 dark:border-amber-900">
                 <h2 className="text-3xl font-bold mb-2 text-amber-800 dark:text-amber-500">{SOCIAL_SCIENCES_DEEP_DIVE.title}</h2>
-                <p className="italic text-lg text-slate-600 dark:text-slate-400 mb-6">"{SOCIAL_SCIENCES_DEEP_DIVE.description}"</p>
+                <p className="italic text-lg text-slate-600 dark:text-slate-400 mb-6">&quot;{SOCIAL_SCIENCES_DEEP_DIVE.description}&quot;</p>
 
                 <div className="grid md:grid-cols-2 gap-6">
                     <div className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-md">
@@ -50,7 +50,6 @@ export default function DeepContentModules() {
                             <div key={i} className="border-b border-amber-200 pb-2">
                                 <h4 className="font-bold text-slate-800 dark:text-white">{sub.name}</h4>
                                 <p className="text-sm text-slate-600 dark:text-slate-400">{sub.details}</p>
-                                {/* @ts-ignore */}
                                 {sub.successStory && <p className="text-xs text-green-600 font-bold mt-1">💡 {sub.successStory}</p>}
                             </div>
                         ))}
@@ -72,7 +71,6 @@ export default function DeepContentModules() {
                             <div className="relative z-10">
                                 <h4 className="text-xl font-bold mb-2 group-hover:text-fuchsia-400 transition-colors">{sub.name}</h4>
                                 <p className="text-sm opacity-90">{sub.details}</p>
-                                {/* @ts-ignore */}
                                 {sub.successSlogan && <div className="mt-4 inline-block px-3 py-1 bg-white text-purple-900 font-bold text-xs rounded-full transform group-hover:scale-110 transition-transform">{sub.successSlogan}</div>}
                             </div>
                         </div>
