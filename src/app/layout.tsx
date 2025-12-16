@@ -1,34 +1,29 @@
-import type { Metadata } from 'next'
-import { Outfit } from 'next/font/google'
-import './globals.css'
-import { Navbar } from '@/components/Navbar';
-import { ConnectivityMonitor } from '@/components/ConnectivityMonitor';
-import VoiceGuide from '@/components/VoiceGuide';
-
-const outfit = Outfit({ subsets: ['latin'] })
+import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
-    title: 'Career Smart | Intelligent Guidance',
-    description: 'AI-Powered Career Pathways & Market Intelligence for JSEA',
-    manifest: '/manifest.json',
+    title: "UPILI AI | JSEA Transition Advisor",
+    description: "Advanced Agentic AI platform for Kenyan JSEA students transitioning to Senior School. Powered by Gemini 3.",
     icons: {
-        apple: '/icon-192x192.png',
+        icon: "/assets/favicon.ico",
     },
-}
+    openGraph: {
+        title: "UPILI AI - Future-Proof Your Career",
+        description: "Discover your path in the new CBC curriculum with AI-driven analysis.",
+        type: "website",
+    }
+};
 
 export default function RootLayout({
     children,
-}: {
-    children: React.ReactNode
-}) {
+}: Readonly<{
+    children: React.ReactNode;
+}>) {
     return (
-        <html lang="en">
-            <body className={outfit.className}>
-                <ConnectivityMonitor />
-                <Navbar />
+        <html lang="en" className="dark">
+            <body className="bg-black text-white antialiased min-h-screen">
                 {children}
-                <VoiceGuide />
             </body>
         </html>
-    )
+    );
 }
