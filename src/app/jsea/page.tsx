@@ -2,26 +2,13 @@
 
 import { motion } from "framer-motion";
 import { jseaContent } from "@/data/jsea-content";
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { Card } from "@/components/ui/card";
-import { CheckCircle2, AlertCircle, XCircle, Info } from "lucide-react";
+import { CheckCircle2, Info, ChevronRight, PlayCircle } from "lucide-react";
 
 export default function JseaPage() {
-    const data = [
-        { name: 'Formative (Projects)', value: 40, color: '#06b6d4' }, // Cyan-500
-        { name: 'Summative (Exam)', value: 60, color: '#8b5cf6' },    // Purple-500
-    ];
-
-    const gradeColors = {
-        EE: "bg-green-500/10 border-green-500 text-green-400",
-        ME: "bg-blue-500/10 border-blue-500 text-blue-400",
-        AE: "bg-yellow-500/10 border-yellow-500 text-yellow-400",
-        BE: "bg-red-500/10 border-red-500 text-red-400",
-    };
-
     return (
         <main className="min-h-screen bg-black text-white p-4 md:p-12">
-            <div className="max-w-6xl mx-auto space-y-16">
+            <div className="max-w-6xl mx-auto space-y-20">
 
                 {/* Header */}
                 <header className="text-center space-y-4">
@@ -30,109 +17,91 @@ export default function JseaPage() {
                         animate={{ opacity: 1, y: 0 }}
                         className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-cyan-900/30 border border-cyan-800 text-cyan-400 text-sm font-medium"
                     >
-                        <Info className="w-4 h-4" /> Comprehensive Guide
+                        <Info className="w-4 h-4" /> The Ultimate Guide
                     </motion.div>
                     <h1 className="text-5xl font-black tracking-tight mb-4">
-                        Decoding <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">JSEA</span>
+                        {jseaContent.intro.title}
                     </h1>
-                    <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         {jseaContent.intro.description}
                     </p>
                 </header>
 
-                {/* Assessment Structure Chart */}
-                <section className="grid md:grid-cols-2 gap-12 items-center">
-                    <Card className="bg-gray-900/50 border-gray-800 p-8 h-full flex flex-col justify-center">
-                        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                            Assessment Weighting
-                        </h2>
-                        <div className="h-[300px] w-full">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <PieChart>
-                                    <Pie
-                                        data={data}
-                                        cx="50%"
-                                        cy="50%"
-                                        innerRadius={60}
-                                        outerRadius={80}
-                                        paddingAngle={5}
-                                        dataKey="value"
-                                    >
-                                        {data.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
-                                        ))}
-                                    </Pie>
-                                    <Tooltip
-                                        contentStyle={{ backgroundColor: '#000', borderColor: '#333' }}
-                                        itemStyle={{ color: '#fff' }}
-                                    />
-                                    <Legend />
-                                </PieChart>
-                            </ResponsiveContainer>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4 mt-8 text-center">
-                            <div>
-                                <div className="text-3xl font-bold text-cyan-400">40%</div>
-                                <div className="text-xs text-gray-500 uppercase tracking-widest">School Based</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl font-bold text-purple-400">60%</div>
-                                <div className="text-xs text-gray-500 uppercase tracking-widest">National Exam</div>
-                            </div>
-                        </div>
-                    </Card>
-
-                    <div className="space-y-6">
-                        <h3 className="text-3xl font-bold text-white">How You Are Graded</h3>
-                        <p className="text-gray-400 leading-relaxed">
-                            JSEA moves away from raw marks (e.g. 350/500) towards <strong>Performance Levels</strong>.
-                            The goal is to measure competency, not just memory.
-                        </p>
-
-                        <div className="space-y-4">
-                            {jseaContent.jsea.grading.map((grade) => (
-                                <motion.div
-                                    key={grade.code}
-                                    whileHover={{ scale: 1.02 }}
-                                    className={`p-4 rounded-xl border ${gradeColors[grade.code as keyof typeof gradeColors]} transition-all`}
-                                >
-                                    <div className="flex items-center justify-between mb-2">
-                                        <div className="flex items-center gap-3">
-                                            <span className="text-2xl font-black">{grade.code}</span>
-                                            <span className="font-bold text-lg">{grade.level}</span>
-                                        </div>
-                                        <span className="text-sm font-mono opacity-70">{grade.range}</span>
+                {/* CBC Journey Roadmap */}
+                <section>
+                    <h2 className="text-3xl font-bold mb-8 text-center"><span className="text-cyan-400">Safari ya CBC</span> (The Journey)</h2>
+                    <div className="relative border-l-4 border-cyan-900 ml-4 md:ml-12 space-y-12 py-4">
+                        {jseaContent.cbcJourney.map((step, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="relative pl-8 md:pl-12"
+                            >
+                                <div className="absolute -left-[14px] top-1 w-6 h-6 bg-black border-4 border-cyan-500 rounded-full" />
+                                <div className="bg-gray-900/50 border border-gray-800 p-6 rounded-xl hover:border-cyan-500/50 transition-colors">
+                                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+                                        <h3 className="text-xl font-bold text-white">{step.stage}</h3>
+                                        <span className="text-xs font-mono text-cyan-400 bg-cyan-900/20 px-2 py-1 rounded">{step.duration}</span>
                                     </div>
-                                    <p className="text-sm opacity-90">{grade.description}</p>
-                                </motion.div>
-                            ))}
-                        </div>
+                                    <p className="text-gray-400">{step.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
                     </div>
                 </section>
 
-                {/* Transition Process Visual */}
-                <section className="bg-gray-900/30 rounded-3xl p-8 border border-gray-800">
-                    <h2 className="text-3xl font-bold text-center mb-12">The Transition Timeline</h2>
-                    <div className="relative">
-                        {/* Connecting Line */}
-                        <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-cyan-900 to-purple-900 -translate-y-1/2 hidden md:block" />
+                {/* Grading System Table */}
+                <section className="space-y-8">
+                    <div className="text-center">
+                        <h2 className="text-3xl font-bold mb-4">JSEA Grading Decoded</h2>
+                        <p className="text-gray-400">Understanding your <span className="text-cyan-400 italic">Matokeo</span> (Results)</p>
+                    </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
-                            {[
-                                { step: "1", title: "Registration", desc: "Grade 9 Term 1", icon: CheckCircle2 },
-                                { step: "2", title: "Assessment", desc: "Oct-Nov Exam", icon: AlertCircle },
-                                { step: "3", title: "Grading", desc: "Calculated Score", icon: Info },
-                                { step: "4", title: "Selection", desc: "Choose Pathway", icon: CheckCircle2 }
-                            ].map((item, i) => (
-                                <div key={i} className="bg-black border border-gray-800 p-6 rounded-2xl text-center group hover:border-cyan-500 transition-colors">
-                                    <div className="w-12 h-12 mx-auto bg-gray-900 rounded-full flex items-center justify-center mb-4 group-hover:bg-cyan-900 transition-colors">
-                                        <item.icon className="w-6 h-6 text-cyan-400" />
-                                    </div>
-                                    <h4 className="font-bold text-white mb-1">{item.title}</h4>
-                                    <p className="text-xs text-gray-500">{item.desc}</p>
-                                </div>
-                            ))}
+                    <div className="bg-gray-900/30 border border-gray-800 rounded-2xl overflow-hidden">
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left text-sm">
+                                <thead className="bg-black/50 text-cyan-400 uppercase font-bold border-b border-gray-800">
+                                    <tr>
+                                        <th className="p-4">Subject</th>
+                                        <th className="p-4">Code</th>
+                                        <th className="p-4">Assessment Areas</th>
+                                        <th className="p-4">Levels</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-gray-800">
+                                    {jseaContent.gradingSystem.map((sub, i) => (
+                                        <tr key={i} className="hover:bg-white/5 transition-colors">
+                                            <td className="p-4 font-bold text-white">{sub.subject}</td>
+                                            <td className="p-4 font-mono text-gray-500">{sub.code}</td>
+                                            <td className="p-4 text-gray-300">{sub.areas}</td>
+                                            <td className="p-4 text-xs font-mono text-cyan-500">{sub.levels}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                        {jseaContent.gradingScale.map((grade) => (
+                            <div key={grade.code} className="bg-black border border-gray-800 p-4 rounded-xl text-center hover:border-cyan-500 transition-all">
+                                <div className="text-2xl font-black text-white mb-1">{grade.code}</div>
+                                <div className="text-xs font-bold text-cyan-400 mb-2">{grade.level}</div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Video Placeholder */}
+                <section className="bg-gradient-to-r from-purple-900/20 to-cyan-900/20 rounded-3xl p-1 mb-8">
+                    <div className="bg-black/80 backdrop-blur rounded-[20px] p-8 text-center border border-gray-800 relative overflow-hidden group cursor-pointer hover:border-cyan-500 transition-all">
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-shimmer" />
+                        <PlayCircle className="w-16 h-16 text-white/80 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                        <h3 className="text-2xl font-bold text-white mb-2">Watch: Understanding JSEA Scoring</h3>
+                        <p className="text-cyan-400 text-sm">Coming Soon | Video Resource</p>
                     </div>
                 </section>
 

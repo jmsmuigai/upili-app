@@ -2,28 +2,12 @@
 
 import { motion } from "framer-motion";
 import { jseaContent } from "@/data/jsea-content";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { Card } from "@/components/ui/card";
-import { AlertTriangle, Lightbulb, Brain, ChevronRight } from "lucide-react";
+import { AlertTriangle, ShieldCheck, PlayCircle } from "lucide-react";
 import { useState } from "react";
 
 export default function CareersPage() {
-    const riskData = [
-        { name: 'Data Entry', risk: 95, fill: '#ef4444' }, // Red
-        { name: 'Accounting', risk: 88, fill: '#ef4444' },
-        { name: 'HR Admin', risk: 80, fill: '#f97316' },   // Orange
-        { name: 'Design', risk: 30, fill: '#22c55e' },     // Green
-        { name: 'Software', risk: 20, fill: '#22c55e' },
-    ];
-
-    const skillsData = [
-        { subject: 'Tech (STEM)', A: 80, fullMark: 100 },
-        { subject: 'Creativity', A: 90, fullMark: 100 },
-        { subject: 'Communication', A: 85, fullMark: 100 },
-        { subject: 'EQ', A: 95, fullMark: 100 },
-        { subject: 'Digital', A: 100, fullMark: 100 },
-    ];
-
     const [showAdvice, setShowAdvice] = useState(false);
 
     return (
@@ -31,139 +15,100 @@ export default function CareersPage() {
             <div className="max-w-6xl mx-auto space-y-20">
 
                 {/* Hero Section */}
-                <section className="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <div className="inline-block bg-amber-500/20 text-amber-500 border border-amber-500/50 text-xs font-bold px-3 py-1 rounded mb-6 animate-pulse">
-                            CRITICAL ADVISORY
-                        </div>
-                        <h1 className="text-5xl font-black mb-6 leading-tight">
-                            The AI Revolution <br />
-                            <span className="text-amber-500">Is Here.</span>
-                        </h1>
-                        <p className="text-xl text-gray-400 mb-8 leading-relaxed">
-                            Artificial Intelligence is not science fiction—it is automating routine tasks today.
-                            Choosing a career path without considering AI is like buying a ticket for a train that has already left.
-                        </p>
+                <section className="text-center space-y-6">
+                    <div className="inline-block bg-red-500/10 text-red-500 border border-red-500/50 text-xs font-bold px-4 py-2 rounded-full animate-pulse">
+                        <AlertTriangle className="w-3 h-3 inline mr-2" />
+                        WARNING: The Job Market Has Changed
+                    </div>
+                    <h1 className="text-5xl md:text-6xl font-black leading-tight">
+                        The <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">AI Revolution</span> <br />
+                        What Your Parents Don't Know
+                    </h1>
+                    <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+                        Artificial Intelligence is automating routine tasks. Choosing a career path without considering AI is like buying a ticket for a train that has already left.
+                        <span className="block mt-2 text-white font-bold">Usichague kazi ya jana. (Don't choose yesterday's job.)</span>
+                    </p>
+                </section>
 
-                        <div className="bg-gray-900 border border-gray-800 p-6 rounded-xl">
-                            <h3 className="font-bold text-white mb-4 flex items-center gap-2">
-                                <AlertTriangle className="text-red-500" /> High Risk Zones
+                {/* AI Impact Chart Section */}
+                <section className="grid lg:grid-cols-2 gap-12 items-center bg-gray-900/20 p-8 rounded-3xl border border-gray-800">
+                    <div className="h-[400px] w-full">
+                        <h3 className="text-center font-bold text-white mb-4">AI Impact on Future Careers (2030+)</h3>
+                        <ResponsiveContainer width="100%" height="100%">
+                            <PieChart>
+                                <Pie
+                                    data={jseaContent.aiImpact.stats}
+                                    cx="50%"
+                                    cy="50%"
+                                    innerRadius={80}
+                                    outerRadius={120}
+                                    paddingAngle={5}
+                                    dataKey="value"
+                                >
+                                    {jseaContent.aiImpact.stats.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={entry.fill} stroke="none" />
+                                    ))}
+                                </Pie>
+                                <Tooltip
+                                    contentStyle={{ backgroundColor: '#000', borderColor: '#333' }}
+                                    itemStyle={{ color: '#fff' }}
+                                />
+                                <Legend />
+                            </PieChart>
+                        </ResponsiveContainer>
+                    </div>
+
+                    <div className="space-y-8">
+                        <div>
+                            <h3 className="text-xl font-bold text-red-500 mb-4 flex items-center gap-2">
+                                <AlertTriangle className="w-5 h-5" /> HIGH RISK (60-90% Automation)
                             </h3>
-                            <ul className="space-y-3 text-gray-400">
-                                {jseaContent.aiFuture.warnings.slice(0, 3).map((warn, i) => (
-                                    <li key={i} className="flex items-start gap-2 text-sm">
-                                        <span className="text-red-500 mt-1">●</span>
-                                        <span>
-                                            <strong className="text-white">{warn.role}:</strong> {warn.reason}
-                                        </span>
-                                    </li>
+                            <ul className="space-y-2">
+                                {jseaContent.aiImpact.highRisk.map((job, i) => (
+                                    <li key={i} className="text-gray-300 border-l-2 border-red-900 pl-3 text-sm">{job}</li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold text-orange-500 mb-4 flex items-center gap-2">
+                                <AlertTriangle className="w-5 h-5" /> MEDIUM RISK (30-60% Automation)
+                            </h3>
+                            <ul className="space-y-2">
+                                {jseaContent.aiImpact.mediumRisk.map((job, i) => (
+                                    <li key={i} className="text-gray-300 border-l-2 border-orange-900 pl-3 text-sm">{job}</li>
                                 ))}
                             </ul>
                         </div>
                     </div>
-
-                    <Card className="bg-gray-900/50 border-gray-800 p-6 h-[400px]">
-                        <h3 className="text-center font-bold text-white mb-6">Automation Potential by 2030</h3>
-                        <ResponsiveContainer width="100%" height="85%">
-                            <BarChart data={riskData}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-                                <XAxis dataKey="name" stroke="#666" fontSize={10} />
-                                <YAxis stroke="#666" fontSize={10} />
-                                <Tooltip
-                                    contentStyle={{ backgroundColor: '#000', borderColor: '#333' }}
-                                    cursor={{ fill: 'rgba(255,255,255,0.05)' }}
-                                />
-                                <Bar dataKey="risk" radius={[4, 4, 0, 0]} />
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </Card>
                 </section>
 
-                {/* Strategy Section */}
-                <section className="text-center">
-                    <h2 className="text-3xl font-bold mb-4">How to Survive?</h2>
-                    <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-                        The goal is not to avoid these fields, but to evolve. An accountant who knows AI is a Strategic Financial Analyst.
+                {/* Safe Careers */}
+                <section className="bg-green-900/10 border border-green-900/30 p-8 rounded-3xl">
+                    <h2 className="text-3xl font-bold text-center mb-8 flex items-center justify-center gap-3">
+                        <ShieldCheck className="w-8 h-8 text-green-500" /> SAFE CAREERS (AI-Resistant)
+                    </h2>
+                    <div className="flex flex-wrap justify-center gap-4">
+                        {jseaContent.aiImpact.safe.map((job, i) => (
+                            <motion.div
+                                key={i}
+                                whileHover={{ scale: 1.05 }}
+                                className="px-6 py-3 bg-green-900/20 border border-green-800 text-green-400 rounded-full font-bold shadow-[0_0_15px_rgba(22,163,74,0.1)]"
+                            >
+                                {job}
+                            </motion.div>
+                        ))}
+                    </div>
+                    <p className="text-center text-gray-400 mt-8 max-w-2xl mx-auto">
+                        These jobs require <span className="text-white font-bold">human empathy, complex creativity, and physical dexterity</span>—things robots still suck at.
                     </p>
-
-                    {!showAdvice ? (
-                        <button
-                            onClick={() => setShowAdvice(true)}
-                            className="bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg shadow-cyan-500/20"
-                        >
-                            Reveal Survival Strategy
-                        </button>
-                    ) : (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            className="grid md:grid-cols-3 gap-6 text-left"
-                        >
-                            {jseaContent.aiFuture.advice.map((tip, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ y: 20, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className="bg-black border border-cyan-900/50 p-6 rounded-2xl hover:border-cyan-500 transition-colors"
-                                >
-                                    <Lightbulb className="w-8 h-8 text-cyan-400 mb-4" />
-                                    <h3 className="font-bold text-white mb-2">{tip.title}</h3>
-                                    <p className="text-sm text-gray-400">{tip.content}</p>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    )}
                 </section>
 
-                {/* Skills Radar */}
-                <section className="bg-gradient-to-br from-gray-900 to-black rounded-3xl p-8 md:p-12 border border-gray-800">
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h2 className="text-3xl font-bold mb-6">The Balanced Profile</h2>
-                            <p className="text-gray-400 mb-6 leading-relaxed">
-                                Employers don't just want robots. They want humans who can use robots.
-                                The ideal candidate for 2030 balances technical skill with emotional intelligence.
-                            </p>
-                            <div className="flex flex-col gap-4">
-                                <div className="flex items-center gap-3 p-3 rounded-lg bg-green-900/20 border border-green-900/50">
-                                    <Brain className="text-green-400 w-6 h-6" />
-                                    <div>
-                                        <div className="font-bold text-white">Emotional Intelligence (EQ)</div>
-                                        <div className="text-xs text-green-400">Hardest to automate</div>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-3 p-3 rounded-lg bg-cyan-900/20 border border-cyan-900/50">
-                                    <div className="font-bold text-cyan-400 text-xl w-6 text-center">AI</div>
-                                    <div>
-                                        <div className="font-bold text-white">Digital Literacy</div>
-                                        <div className="text-xs text-cyan-400">Universal Requirement</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="h-[350px]">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={skillsData}>
-                                    <PolarGrid stroke="#333" />
-                                    <PolarAngleAxis dataKey="subject" tick={{ fill: '#9ca3af', fontSize: 10 }} />
-                                    <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                                    <Radar
-                                        name="Ideal Profile"
-                                        dataKey="A"
-                                        stroke="#0891b2" // Cyan-600
-                                        strokeWidth={3}
-                                        fill="#06b6d4"   // Cyan-500
-                                        fillOpacity={0.3}
-                                    />
-                                    <Tooltip
-                                        contentStyle={{ backgroundColor: '#000', borderColor: '#333' }}
-                                        itemStyle={{ color: '#fff' }}
-                                    />
-                                </RadarChart>
-                            </ResponsiveContainer>
-                        </div>
+                {/* Video Placeholder */}
+                <section className="bg-gradient-to-r from-gray-900 to-black rounded-3xl p-1">
+                    <div className="bg-black/80 backdrop-blur rounded-[20px] p-12 text-center border border-gray-800 relative overflow-hidden group cursor-pointer hover:border-red-500 transition-all">
+                        <PlayCircle className="w-20 h-20 text-red-500/80 mx-auto mb-6 group-hover:scale-110 transition-transform" />
+                        <h3 className="text-3xl font-bold text-white mb-2">Documentary: The Future of Work</h3>
+                        <p className="text-gray-500">Watch how AI is changing jobs in Nairobi today.</p>
                     </div>
                 </section>
 
