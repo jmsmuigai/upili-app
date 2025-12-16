@@ -7,7 +7,9 @@ import { generateId } from "ai";
 import { analyzeStudentProfile } from "@/app/actions";
 import { ThreatRadar } from "../visuals/ThreatRadar";
 
-type Step = "intro" | "personal" | "academics" | "interests" | "analysis" | "results";
+
+type Step = "intro" | "infographic" | "personal" | "academics" | "interests" | "analysis" | "results";
+
 
 
 
