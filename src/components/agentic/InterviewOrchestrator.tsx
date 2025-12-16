@@ -9,10 +9,9 @@ import { analyzeStudentProfile } from "@/app/actions";
 import { ThreatRadar } from "../visuals/ThreatRadar";
 
 
+import { ResourceHub } from "@/components/dashboard/ResourceHub";
+
 type Step = "intro" | "infographic" | "personal" | "academics" | "interests" | "analysis" | "results";
-
-
-
 
 interface AnalysisResult {
     summary: string;
@@ -31,6 +30,11 @@ interface AnalysisResult {
         shouldConsider: boolean;
         reason?: string;
         courses?: string[];
+    };
+    selectionRecommendation?: {
+        topSchools: { name: string; type: "National" | "Extra-County" | "County" | "International"; reason: string }[];
+        pathwayFocus: string;
+        matchConfidence: number;
     };
 }
 
@@ -390,6 +394,48 @@ export function InterviewOrchestrator() {
                                 </div>
                             </div>
 
+                            {/* Auto-Selection Protocol */}
+                            {profile.analysis?.selectionRecommendation && (
+                                <div className="mt-8 bg-black/60 border border-green-500/50 rounded-xl p-8 relative overflow-hidden group">
+                                    <div className="absolute inset-0 bg-green-500/5 animate-pulse-glow" />
+                                    <div className="relative z-10">
+                                        <div className="flex items-center justify-between mb-6">
+                                            <h3 className="text-2xl font-bold text-green-400 flex items-center gap-3">
+                                                <BrainCircuit className="w-6 h-6" /> AUTO-SELECTION PROTOCOL
+                                            </h3>
+                                            <span className="px-3 py-1 bg-green-500/20 text-green-400 text-xs font-bold rounded border border-green-500/50">
+                                                CONFIDENCE: {profile.analysis.selectionRecommendation.matchConfidence}%
+                                            </span>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                                            {profile.analysis.selectionRecommendation.topSchools.map((school, idx) => (
+                                                <div key={idx} className="bg-gray-900 border border-gray-700 p-4 rounded-lg hover:border-green-400 transition-colors">
+                                                    <span className="text-xs text-gray-500 uppercase">{school.type}</span>
+                                                    <h4 className="text-white font-bold text-lg mb-2">{school.name}</h4>
+                                                    <p className="text-xs text-gray-400 border-t border-gray-800 pt-2 mt-2">
+                                                        "{school.reason}"
+                                                    </p>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className="flex items-center gap-2 text-sm text-gray-400 bg-black/40 p-3 rounded">
+                                            <AlertTriangle className="w-4 h-4 text-yellow-500" />
+                                            <span>Recommendation based on academic profile & career trajectory. Verify via KNEC Portal.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Resource Applets */}
+                            <div className="mt-12">
+                                <h3 className="text-xl text-center text-cyber-dark uppercase tracking-widest mb-6 border-b border-gray-800 pb-2">
+                                    Official Government Links
+                                </h3>
+                                <ResourceHub />
+                            </div>
+
                             <div className="pt-12 flex justify-center pb-8">
                                 <button
                                     onClick={handleRestart}
@@ -401,12 +447,12 @@ export function InterviewOrchestrator() {
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </div>
+            </div >
 
             {/* Footer Branding */}
-            <div className="fixed bottom-4 right-4 text-xs text-cyber-dark opacity-50">
+            < div className="fixed bottom-4 right-4 text-xs text-cyber-dark opacity-50" >
                 POWERED BY GOOGLE GEMINI 3.0 // DEEPMIND PROTOCOL
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }

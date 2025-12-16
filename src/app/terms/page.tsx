@@ -1,52 +1,77 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { ShieldCheck, Scale, FileCode, Terminal } from "lucide-react";
+
 export default function TermsPage() {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 to-indigo-950 text-white pt-24 pb-12 px-8">
-            <div className="max-w-3xl mx-auto bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl">
-                <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-500 mb-8 border-b border-white/10 pb-4">
-                    Terms & Conditions
-                </h1>
+        <div className="min-h-screen bg-black text-cyan-50 font-mono p-4 md:p-12 relative overflow-hidden">
+            <div className="fixed inset-0 pointer-events-none opacity-20">
+                <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(rgba(0,255,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.1)_1px,transparent_1px)] bg-[size:30px_30px]" />
+            </div>
 
-                <div className="text-slate-300 space-y-6 leading-relaxed">
-                    <p className="flex items-center gap-2">
-                        <span className="bg-green-500/20 text-green-400 px-2 py-1 rounded text-xs font-bold uppercase tracking-wide">Updated</span>
-                        Dec 2025
+            <div className="max-w-4xl mx-auto relative z-10 border border-cyan-900 bg-black/90 p-8 md:p-12 shadow-[0_0_50px_rgba(0,243,255,0.1)]">
+
+                <header className="mb-12 border-b border-cyan-800 pb-8">
+                    <div className="flex items-center gap-4 mb-4 text-cyan-400">
+                        <Terminal className="w-8 h-8" />
+                        <h1 className="text-3xl font-bold tracking-tighter">DIGITAL PROTOCOL AGREEMENT (<span className="text-white">TERMS</span>)</h1>
+                    </div>
+                    <p className="text-gray-400 text-sm">
+                        SYSTEM TIMESTAMP: {new Date().toISOString()}
                     </p>
+                </header>
 
+                <div className="space-y-12">
                     <section>
-                        <h2 className="text-xl font-bold text-white mb-2">1. Privacy & Data</h2>
-                        <p>
-                            Upili respects your privacy. While using the <strong>Smart Advisor</strong>, your queries are processed by Gemini Pro to provide personalized guidance.
-                            No personal identification data is permanently stored in this demo version.
-                        </p>
+                        <h2 className="text-xl font-bold text-cyan-400 mb-4 flex items-center gap-2">
+                            <ShieldCheck className="w-5 h-5" /> 1. SYSTEM INTELLIGENCE DISCLAIMER
+                        </h2>
+                        <div className="pl-4 border-l-2 border-cyan-900 space-y-4 text-gray-300">
+                            <p>
+                                UPILI (Compass) utilizes standard Artificial Intelligence (Gemini Models) to process user inputs and generate recommendations.
+                                While our algorithms are calibrated for high accuracy, the results are <strong className="text-white">PREDICTIVE SIMULATIONS</strong> only.
+                            </p>
+                            <p className="text-xs uppercase tracking-widest text-red-400">
+                                WARNING: THIS APPLICATION DOES NOT REPLACE OFFICIAL KNEC SUBMISSIONS.
+                            </p>
+                        </div>
                     </section>
 
                     <section>
-                        <h2 className="text-xl font-bold text-white mb-2">2. Educational Guidance</h2>
-                        <p>
-                            Tools like the <strong>Career Quiz</strong> and <strong>Roadmap</strong> are designed to support decision making.
-                            Users should consult with official school administrators for final KNEC registration and placement in Senior Secondary School.
-                        </p>
+                        <h2 className="text-xl font-bold text-cyan-400 mb-4 flex items-center gap-2">
+                            <Scale className="w-5 h-5" /> 2. DATA SOVEREIGNTY
+                        </h2>
+                        <div className="pl-4 border-l-2 border-cyan-900 space-y-4 text-gray-300">
+                            <p>
+                                We define strictly to the Data Protection Act, 2019 of Kenya.
+                                Your student profile data is processed ephemerally for the purpose of generating JSEA guidance.
+                            </p>
+                            <ul className="list-disc list-inside text-sm space-y-1 text-gray-400">
+                                <li>No personally identifiable data is sold to third parties.</li>
+                                <li>Session data is stored locally in your browser when possible.</li>
+                            </ul>
+                        </div>
                     </section>
 
                     <section>
-                        <h2 className="text-xl font-bold text-white mb-2">3. Content Accuracy</h2>
-                        <p>
-                            Schemes of work, book lists, and expectations are based on the latest Competency Based Education (CBE) frameworks.
-                            We strive for accuracy but curriculum updates happen frequently.
-                        </p>
-                    </section>
-
-                    <section>
-                        <h2 className="text-xl font-bold text-white mb-2">4. User Conduct</h2>
-                        <p>
-                            Be kind and ready to learn! The games and community features are for educational growth.
-                        </p>
+                        <h2 className="text-xl font-bold text-cyan-400 mb-4 flex items-center gap-2">
+                            <FileCode className="w-5 h-5" /> 3. USAGE LICENSE
+                        </h2>
+                        <div className="pl-4 border-l-2 border-cyan-900 space-y-4 text-gray-300">
+                            <p>
+                                Compass.KE grants you a revocable, non-exclusive license to strictly use this interface for educational planning.
+                                Reverse engineering of the <span className="text-cyan-400">Interview/Analysis Protocol</span> is strictly prohibited.
+                            </p>
+                        </div>
                     </section>
                 </div>
 
-                <div className="mt-12 pt-8 border-t border-white/10 text-center">
-                    <p className="text-sm text-slate-400">© 2025 Upili Education Platform. Empowering Futures.</p>
-                </div>
+                <footer className="mt-16 pt-8 border-t border-cyan-900 text-center text-xs text-gray-500">
+                    <p>END OF LINE_</p>
+                    <p>AGREEMENT ID: {Math.random().toString(36).substring(7).toUpperCase()}</p>
+                </footer>
+
             </div>
         </div>
     );

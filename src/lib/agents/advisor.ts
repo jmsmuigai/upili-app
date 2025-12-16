@@ -27,6 +27,15 @@ export const advisorAgent = {
                 shouldConsider: z.boolean(),
                 reason: z.string().optional(),
                 courses: z.array(z.string()).optional()
+            }).optional(),
+            selectionRecommendation: z.object({
+                topSchools: z.array(z.object({
+                    name: z.string(),
+                    type: z.enum(["National", "Extra-County", "County", "International"]),
+                    reason: z.string()
+                })),
+                pathwayFocus: z.string(),
+                matchConfidence: z.number()
             }).optional()
         });
 
