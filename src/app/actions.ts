@@ -2,7 +2,7 @@
 
 import { advisorAgent } from "@/lib/agents/advisor";
 
-export async function analyzeStudentProfile(profile: any) {
+export async function analyzeStudentProfile(profile: unknown) {
     try {
         const analysis = await advisorAgent.analyzeProfile(profile);
         return { success: true, data: analysis };

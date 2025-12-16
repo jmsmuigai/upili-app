@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldAlert, Bot } from "lucide-react";
+import { Bot } from "lucide-react";
 
 interface ThreatRadarProps {
     threatLevel: "LOW" | "MEDIUM" | "HIGH";

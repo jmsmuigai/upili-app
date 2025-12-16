@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BrainCircuit, ChevronRight, User, BookOpen, Heart, Activity, Sparkles, AlertTriangle } from "lucide-react";
-import { generateId } from "ai";
+
 import { analyzeStudentProfile } from "@/app/actions";
 import { ThreatRadar } from "../visuals/ThreatRadar";
 
@@ -136,7 +136,7 @@ export function InterviewOrchestrator() {
                                     </h2>
                                     <p className="text-lg text-gray-400 leading-relaxed mb-8">
                                         The transition from JSEA to Senior School is critical.
-                                        Don't just guess. Use our military-grade AI to analyze your strengths against the automated future.
+                                        Don&apos;t just guess. Use our military-grade AI to analyze your strengths against the automated future.
                                     </p>
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
@@ -362,9 +362,9 @@ export function InterviewOrchestrator() {
                                         <AlertTriangle className="w-5 h-5" /> AI Threat Assessment
                                     </h3>
                                     <ThreatRadar
-                                        threatLevel={profile.analysis?.careerPath.aiThreatAnalysis.threatLevel!}
-                                        resilienceScore={profile.analysis?.careerPath.aiThreatAnalysis.resilienceScore!}
-                                        reasoning={profile.analysis?.careerPath.aiThreatAnalysis.reasoning!}
+                                        threatLevel={profile.analysis?.careerPath.aiThreatAnalysis.threatLevel ?? "MEDIUM"}
+                                        resilienceScore={profile.analysis?.careerPath.aiThreatAnalysis.resilienceScore ?? 50}
+                                        reasoning={profile.analysis?.careerPath.aiThreatAnalysis.reasoning ?? "Analysis pending."}
                                     />
 
                                     {/* Career Path Snapshot */}
