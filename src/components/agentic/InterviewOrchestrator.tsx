@@ -152,7 +152,13 @@ export function InterviewOrchestrator() {
 
                                         <Link href="/senior-school" className="px-8 py-4 bg-transparent border border-gray-700 text-gray-300 font-bold rounded-lg hover:border-cyan-500 hover:text-cyan-400 transition-colors flex items-center justify-center gap-2">
                                             <BookOpen className="w-5 h-5" />
-                                            View Curriculum Matrix
+                                            Curriculum
+                                        </Link>
+                                    </div>
+
+                                    <div className="mt-6 flex justify-center">
+                                        <Link href="/careers" className="text-sm text-cyan-400 hover:text-cyan-300 flex items-center gap-1 animate-pulse">
+                                            <AlertTriangle className="w-4 h-4" /> The AI Revolution is here. Is your career safe?
                                         </Link>
                                     </div>
                                 </div>
